@@ -35,12 +35,13 @@ class GitLabPayloadMapper extends ClassMapperBase<GitLabPayload> {
   static String _$afterCommitSHA(GitLabPayload v) => v.afterCommitSHA;
   static const Field<GitLabPayload, String> _f$afterCommitSHA =
       Field('afterCommitSHA', _$afterCommitSHA, key: 'after');
-  static String _$branch(GitLabPayload v) => v.branch;
-  static const Field<GitLabPayload, String> _f$branch =
-      Field('branch', _$branch, key: 'ref');
-  static bool _$isBranchProtected(GitLabPayload v) => v.isBranchProtected;
-  static const Field<GitLabPayload, bool> _f$isBranchProtected =
-      Field('isBranchProtected', _$isBranchProtected, key: 'ref_protected');
+  static String _$branchRefName(GitLabPayload v) => v.branchRefName;
+  static const Field<GitLabPayload, String> _f$branchRefName =
+      Field('branchRefName', _$branchRefName, key: 'ref');
+  static bool _$isRefBranchProtected(GitLabPayload v) => v.isRefBranchProtected;
+  static const Field<GitLabPayload, bool> _f$isRefBranchProtected = Field(
+      'isRefBranchProtected', _$isRefBranchProtected,
+      key: 'ref_protected');
   static String _$checkoutSha(GitLabPayload v) => v.checkoutSha;
   static const Field<GitLabPayload, String> _f$checkoutSha =
       Field('checkoutSha', _$checkoutSha, key: 'checkout_sha');
@@ -88,8 +89,8 @@ class GitLabPayloadMapper extends ClassMapperBase<GitLabPayload> {
     #eventName: _f$eventName,
     #beforeCommitSHA: _f$beforeCommitSHA,
     #afterCommitSHA: _f$afterCommitSHA,
-    #branch: _f$branch,
-    #isBranchProtected: _f$isBranchProtected,
+    #branchRefName: _f$branchRefName,
+    #isRefBranchProtected: _f$isRefBranchProtected,
     #checkoutSha: _f$checkoutSha,
     #message: _f$message,
     #performerUserId: _f$performerUserId,
@@ -110,8 +111,8 @@ class GitLabPayloadMapper extends ClassMapperBase<GitLabPayload> {
         eventName: data.dec(_f$eventName),
         beforeCommitSHA: data.dec(_f$beforeCommitSHA),
         afterCommitSHA: data.dec(_f$afterCommitSHA),
-        branch: data.dec(_f$branch),
-        isBranchProtected: data.dec(_f$isBranchProtected),
+        branchRefName: data.dec(_f$branchRefName),
+        isRefBranchProtected: data.dec(_f$isRefBranchProtected),
         checkoutSha: data.dec(_f$checkoutSha),
         message: data.dec(_f$message),
         performerUserId: data.dec(_f$performerUserId),
@@ -191,8 +192,8 @@ abstract class GitLabPayloadCopyWith<$R, $In extends GitLabPayload, $Out>
       String? eventName,
       String? beforeCommitSHA,
       String? afterCommitSHA,
-      String? branch,
-      bool? isBranchProtected,
+      String? branchRefName,
+      bool? isRefBranchProtected,
       String? checkoutSha,
       String? message,
       int? performerUserId,
@@ -234,8 +235,8 @@ class _GitLabPayloadCopyWithImpl<$R, $Out>
           String? eventName,
           String? beforeCommitSHA,
           String? afterCommitSHA,
-          String? branch,
-          bool? isBranchProtected,
+          String? branchRefName,
+          bool? isRefBranchProtected,
           String? checkoutSha,
           Object? message = $none,
           int? performerUserId,
@@ -253,8 +254,9 @@ class _GitLabPayloadCopyWithImpl<$R, $Out>
         if (eventName != null) #eventName: eventName,
         if (beforeCommitSHA != null) #beforeCommitSHA: beforeCommitSHA,
         if (afterCommitSHA != null) #afterCommitSHA: afterCommitSHA,
-        if (branch != null) #branch: branch,
-        if (isBranchProtected != null) #isBranchProtected: isBranchProtected,
+        if (branchRefName != null) #branchRefName: branchRefName,
+        if (isRefBranchProtected != null)
+          #isRefBranchProtected: isRefBranchProtected,
         if (checkoutSha != null) #checkoutSha: checkoutSha,
         if (message != $none) #message: message,
         if (performerUserId != null) #performerUserId: performerUserId,
@@ -277,9 +279,9 @@ class _GitLabPayloadCopyWithImpl<$R, $Out>
       eventName: data.get(#eventName, or: $value.eventName),
       beforeCommitSHA: data.get(#beforeCommitSHA, or: $value.beforeCommitSHA),
       afterCommitSHA: data.get(#afterCommitSHA, or: $value.afterCommitSHA),
-      branch: data.get(#branch, or: $value.branch),
-      isBranchProtected:
-          data.get(#isBranchProtected, or: $value.isBranchProtected),
+      branchRefName: data.get(#branchRefName, or: $value.branchRefName),
+      isRefBranchProtected:
+          data.get(#isRefBranchProtected, or: $value.isRefBranchProtected),
       checkoutSha: data.get(#checkoutSha, or: $value.checkoutSha),
       message: data.get(#message, or: $value.message),
       performerUserId: data.get(#performerUserId, or: $value.performerUserId),

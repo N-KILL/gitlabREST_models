@@ -5,7 +5,10 @@ import 'package:gitlab_rest_models/src/models/repository/repository.dart';
 
 part 'gitlab_payload.mapper.dart';
 
-///
+/// This class is used to map the data which comes from GitLab Webhook, for more
+/// info, follow the links:
+/// https://docs.gitlab.com/ee/user/project/integrations/webhooks.html
+/// https://docs.gitlab.com/ee/user/project/integrations/webhook_events.html
 @MappableClass(caseStyle: CaseStyle.snakeCase)
 class GitLabPayload with GitLabPayloadMappable {
   ///
@@ -14,8 +17,8 @@ class GitLabPayload with GitLabPayloadMappable {
     required this.eventName,
     required this.beforeCommitSHA,
     required this.afterCommitSHA,
-    required this.branch,
-    required this.isBranchProtected,
+    required this.branchRefName,
+    required this.isRefBranchProtected,
     required this.checkoutSha,
     required this.message,
     required this.performerUserId,
@@ -37,7 +40,8 @@ class GitLabPayload with GitLabPayloadMappable {
   @MappableField(key: 'object_kind')
   String operationType;
 
-  ///
+  /// Event name given from gitlab, in most of the cases it will be the same as 
+  /// the operationType
   String eventName;
 
   /// Its the SHA code before this commit was done
@@ -48,54 +52,57 @@ class GitLabPayload with GitLabPayloadMappable {
   @MappableField(key: 'after')
   String afterCommitSHA;
 
-  ///
+  /// This value indicates where the commit is pointing at. 
+  /// Example: refs/heads/main
   @MappableField(key: 'ref')
-  String branch;
+  String branchRefName;
 
-  ///
+  /// Bool value that indicate if the branch is protected of not according to
+  /// the configuration on the project
   @MappableField(key: 'ref_protected')
-  bool isBranchProtected;
+  bool isRefBranchProtected;
 
   /// Its the SHA code after this commit
   String checkoutSha;
 
-  // TODO (Nacho): Ver cuando se genera el mensaje
+  // TODO(Nacho): Ver cuando se genera el mensaje
   ///
   String? message;
 
-  ///
+  /// User id from who triggered the webhook
   @MappableField(key: 'user_id')
   int performerUserId;
 
-  ///
+  /// User name from who triggered the webhook
   @MappableField(key: 'user_name')
   String performerUserName;
 
-  ///
+  /// Username from who triggered the webhook
   @MappableField(key: 'user_username')
   String performerUserUsername;
 
-  ///
+  /// User email from who triggered the webhook
   @MappableField(key: 'user_email')
   String? performerUserEmail;
 
-  ///
+  /// User avatar url from who triggered the webhook
   @MappableField(key: 'user_avatar')
   String performerUserAvatar;
 
-  ///
+  /// Id of the project related to this webhook payload
   @MappableField(key: 'project_id')
   int relatedProjectId;
 
-  ///
+  /// Details of the project related to this webhook payload
   @MappableField(key: 'project')
   GitLabProject projectDetails;
 
-  ///
+  /// Details of the commits  related to this webhook payload
+  /// (Can be more than one in one payload)
   @MappableField(key: 'commits')
   List<GitLabCommit> commitsDetails;
 
-  ///
+  /// Int value thats indicate the amount of commits related to this payload
   @MappableField(key: 'total_commits_count')
   int commitAmount;
 
@@ -104,7 +111,7 @@ class GitLabPayload with GitLabPayloadMappable {
   ///
   // PushOptions pushOptions;
 
-  ///
+  /// Details of the repository related to this payload
   @MappableField(key: 'repository')
   GitLabRepository repositoryDetails;
 

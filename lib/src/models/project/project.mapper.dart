@@ -20,9 +20,8 @@ class GitLabProjectMapper extends ClassMapperBase<GitLabProject> {
   @override
   final String id = 'GitLabProject';
 
-  static int _$projectId(GitLabProject v) => v.projectId;
-  static const Field<GitLabProject, int> _f$projectId =
-      Field('projectId', _$projectId, key: 'id');
+  static int _$id(GitLabProject v) => v.id;
+  static const Field<GitLabProject, int> _f$id = Field('id', _$id);
   static String _$name(GitLabProject v) => v.name;
   static const Field<GitLabProject, String> _f$name = Field('name', _$name);
   static String? _$description(GitLabProject v) => v.description;
@@ -75,7 +74,7 @@ class GitLabProjectMapper extends ClassMapperBase<GitLabProject> {
 
   @override
   final Map<Symbol, Field<GitLabProject, dynamic>> fields = const {
-    #projectId: _f$projectId,
+    #id: _f$id,
     #name: _f$name,
     #description: _f$description,
     #webUrl: _f$webUrl,
@@ -95,7 +94,7 @@ class GitLabProjectMapper extends ClassMapperBase<GitLabProject> {
 
   static GitLabProject _instantiate(DecodingData data) {
     return GitLabProject(
-        projectId: data.dec(_f$projectId),
+        id: data.dec(_f$id),
         name: data.dec(_f$name),
         description: data.dec(_f$description),
         webUrl: data.dec(_f$webUrl),
@@ -169,7 +168,7 @@ extension GitLabProjectValueCopy<$R, $Out>
 abstract class GitLabProjectCopyWith<$R, $In extends GitLabProject, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
   $R call(
-      {int? projectId,
+      {int? id,
       String? name,
       String? description,
       String? webUrl,
@@ -198,7 +197,7 @@ class _GitLabProjectCopyWithImpl<$R, $Out>
       GitLabProjectMapper.ensureInitialized();
   @override
   $R call(
-          {int? projectId,
+          {int? id,
           String? name,
           Object? description = $none,
           String? webUrl,
@@ -215,7 +214,7 @@ class _GitLabProjectCopyWithImpl<$R, $Out>
           String? sshUrl,
           String? httpUrl}) =>
       $apply(FieldCopyWithData({
-        if (projectId != null) #projectId: projectId,
+        if (id != null) #id: id,
         if (name != null) #name: name,
         if (description != $none) #description: description,
         if (webUrl != null) #webUrl: webUrl,
@@ -237,7 +236,7 @@ class _GitLabProjectCopyWithImpl<$R, $Out>
       }));
   @override
   GitLabProject $make(CopyWithData data) => GitLabProject(
-      projectId: data.get(#projectId, or: $value.projectId),
+      id: data.get(#id, or: $value.id),
       name: data.get(#name, or: $value.name),
       description: data.get(#description, or: $value.description),
       webUrl: data.get(#webUrl, or: $value.webUrl),

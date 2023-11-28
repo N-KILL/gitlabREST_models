@@ -3,10 +3,11 @@ import 'package:gitlab_rest_models/src/models/author/author.dart';
 
 part 'commit.mapper.dart';
 
-///
+/// This mappable model GitLabCommit is used to map a gitlab webhook commit 
+/// information
 @MappableClass(caseStyle: CaseStyle.snakeCase)
 class GitLabCommit with GitLabCommitMappable{
-  ///
+  /// GitLabCommit class constructor
   GitLabCommit({
     required this.id,
     required this.message,

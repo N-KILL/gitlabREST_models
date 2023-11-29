@@ -26,9 +26,9 @@ class GitLabPayloadMapper extends ClassMapperBase<GitLabPayload> {
   static String _$operationType(GitLabPayload v) => v.operationType;
   static const Field<GitLabPayload, String> _f$operationType =
       Field('operationType', _$operationType, key: 'object_kind');
-  static String _$eventName(GitLabPayload v) => v.eventName;
-  static const Field<GitLabPayload, String> _f$eventName =
-      Field('eventName', _$eventName, key: 'event_name');
+  static String _$eventType(GitLabPayload v) => v.eventType;
+  static const Field<GitLabPayload, String> _f$eventType =
+      Field('eventType', _$eventType, key: 'event_name');
   static String _$beforeCommitSHA(GitLabPayload v) => v.beforeCommitSHA;
   static const Field<GitLabPayload, String> _f$beforeCommitSHA =
       Field('beforeCommitSHA', _$beforeCommitSHA, key: 'before');
@@ -86,7 +86,7 @@ class GitLabPayloadMapper extends ClassMapperBase<GitLabPayload> {
   @override
   final Map<Symbol, Field<GitLabPayload, dynamic>> fields = const {
     #operationType: _f$operationType,
-    #eventName: _f$eventName,
+    #eventType: _f$eventType,
     #beforeCommitSHA: _f$beforeCommitSHA,
     #afterCommitSHA: _f$afterCommitSHA,
     #branchRefName: _f$branchRefName,
@@ -108,7 +108,7 @@ class GitLabPayloadMapper extends ClassMapperBase<GitLabPayload> {
   static GitLabPayload _instantiate(DecodingData data) {
     return GitLabPayload(
         operationType: data.dec(_f$operationType),
-        eventName: data.dec(_f$eventName),
+        eventType: data.dec(_f$eventType),
         beforeCommitSHA: data.dec(_f$beforeCommitSHA),
         afterCommitSHA: data.dec(_f$afterCommitSHA),
         branchRefName: data.dec(_f$branchRefName),
@@ -189,7 +189,7 @@ abstract class GitLabPayloadCopyWith<$R, $In extends GitLabPayload, $Out>
       get repositoryDetails;
   $R call(
       {String? operationType,
-      String? eventName,
+      String? eventType,
       String? beforeCommitSHA,
       String? afterCommitSHA,
       String? branchRefName,
@@ -232,7 +232,7 @@ class _GitLabPayloadCopyWithImpl<$R, $Out>
   @override
   $R call(
           {String? operationType,
-          String? eventName,
+          String? eventType,
           String? beforeCommitSHA,
           String? afterCommitSHA,
           String? branchRefName,
@@ -251,7 +251,7 @@ class _GitLabPayloadCopyWithImpl<$R, $Out>
           GitLabRepository? repositoryDetails}) =>
       $apply(FieldCopyWithData({
         if (operationType != null) #operationType: operationType,
-        if (eventName != null) #eventName: eventName,
+        if (eventType != null) #eventType: eventType,
         if (beforeCommitSHA != null) #beforeCommitSHA: beforeCommitSHA,
         if (afterCommitSHA != null) #afterCommitSHA: afterCommitSHA,
         if (branchRefName != null) #branchRefName: branchRefName,
@@ -276,7 +276,7 @@ class _GitLabPayloadCopyWithImpl<$R, $Out>
   @override
   GitLabPayload $make(CopyWithData data) => GitLabPayload(
       operationType: data.get(#operationType, or: $value.operationType),
-      eventName: data.get(#eventName, or: $value.eventName),
+      eventType: data.get(#eventType, or: $value.eventType),
       beforeCommitSHA: data.get(#beforeCommitSHA, or: $value.beforeCommitSHA),
       afterCommitSHA: data.get(#afterCommitSHA, or: $value.afterCommitSHA),
       branchRefName: data.get(#branchRefName, or: $value.branchRefName),

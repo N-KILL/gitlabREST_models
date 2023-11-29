@@ -14,7 +14,7 @@ class GitLabPayload with GitLabPayloadMappable {
   ///
   GitLabPayload({
     required this.operationType,
-    required this.eventName,
+    required this.eventType,
     required this.beforeCommitSHA,
     required this.afterCommitSHA,
     required this.branchRefName,
@@ -40,9 +40,10 @@ class GitLabPayload with GitLabPayloadMappable {
   @MappableField(key: 'object_kind')
   String operationType;
 
-  /// Event name given from gitlab, in most of the cases it will be the same as 
+  /// Event type given from gitlab, in most of the cases it will be the same as 
   /// the operationType
-  String eventName;
+  @MappableField(key: 'event_name')
+  String eventType;
 
   /// Its the SHA code before this commit was done
   @MappableField(key: 'before')

@@ -134,9 +134,6 @@ class ObjectAttributesMapper extends ClassMapperBase<ObjectAttributes> {
       _f$customerRelationsContacts = Field(
           'customerRelationsContacts', _$customerRelationsContacts,
           key: 'customer_relations_contacts');
-  static String _$actionType(ObjectAttributes v) => v.actionType;
-  static const Field<ObjectAttributes, String> _f$actionType =
-      Field('actionType', _$actionType, key: 'event_type');
 
   @override
   final Map<Symbol, Field<ObjectAttributes, dynamic>> fields = const {
@@ -175,7 +172,6 @@ class ObjectAttributesMapper extends ClassMapperBase<ObjectAttributes> {
     #issueState: _f$issueState,
     #severity: _f$severity,
     #customerRelationsContacts: _f$customerRelationsContacts,
-    #actionType: _f$actionType,
   };
 
   static ObjectAttributes _instantiate(DecodingData data) {
@@ -214,8 +210,7 @@ class ObjectAttributesMapper extends ClassMapperBase<ObjectAttributes> {
         labels: data.dec(_f$labels),
         issueState: data.dec(_f$issueState),
         severity: data.dec(_f$severity),
-        customerRelationsContacts: data.dec(_f$customerRelationsContacts),
-        actionType: data.dec(_f$actionType));
+        customerRelationsContacts: data.dec(_f$customerRelationsContacts));
   }
 
   @override
@@ -313,8 +308,7 @@ abstract class ObjectAttributesCopyWith<$R, $In extends ObjectAttributes, $Out>
       List<Label>? labels,
       String? issueState,
       String? severity,
-      List<dynamic>? customerRelationsContacts,
-      String? actionType});
+      List<dynamic>? customerRelationsContacts});
   ObjectAttributesCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
       Then<$Out2, $R2> t);
 }
@@ -379,8 +373,7 @@ class _ObjectAttributesCopyWithImpl<$R, $Out>
           List<Label>? labels,
           String? issueState,
           String? severity,
-          List<dynamic>? customerRelationsContacts,
-          String? actionType}) =>
+          List<dynamic>? customerRelationsContacts}) =>
       $apply(FieldCopyWithData({
         if (authorId != null) #authorId: authorId,
         if (closedAt != $none) #closedAt: closedAt,
@@ -421,8 +414,7 @@ class _ObjectAttributesCopyWithImpl<$R, $Out>
         if (issueState != null) #issueState: issueState,
         if (severity != null) #severity: severity,
         if (customerRelationsContacts != null)
-          #customerRelationsContacts: customerRelationsContacts,
-        if (actionType != null) #actionType: actionType
+          #customerRelationsContacts: customerRelationsContacts
       }));
   @override
   ObjectAttributes $make(CopyWithData data) => ObjectAttributes(
@@ -469,8 +461,7 @@ class _ObjectAttributesCopyWithImpl<$R, $Out>
       issueState: data.get(#issueState, or: $value.issueState),
       severity: data.get(#severity, or: $value.severity),
       customerRelationsContacts: data.get(#customerRelationsContacts,
-          or: $value.customerRelationsContacts),
-      actionType: data.get(#actionType, or: $value.actionType));
+          or: $value.customerRelationsContacts));
 
   @override
   ObjectAttributesCopyWith<$R2, ObjectAttributes, $Out2> $chain<$R2, $Out2>(

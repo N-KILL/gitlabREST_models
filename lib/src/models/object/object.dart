@@ -211,7 +211,7 @@ class ObjectAttributes with ObjectAttributesMappable {
   List<dynamic> customerRelationsContacts;
 
   /// This value storage the type of action realized on this payload
-  @MappableField(key: 'action')
+  @MappableField(key: 'event_type')
   String actionType;
 
   /// FromJson method, convert a json type object into this ObjectAttributes

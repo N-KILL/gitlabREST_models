@@ -136,7 +136,7 @@ class ObjectAttributesMapper extends ClassMapperBase<ObjectAttributes> {
           key: 'customer_relations_contacts');
   static String _$actionType(ObjectAttributes v) => v.actionType;
   static const Field<ObjectAttributes, String> _f$actionType =
-      Field('actionType', _$actionType, key: 'action');
+      Field('actionType', _$actionType, key: 'event_type');
 
   @override
   final Map<Symbol, Field<ObjectAttributes, dynamic>> fields = const {

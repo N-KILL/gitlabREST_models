@@ -37,12 +37,12 @@ class Label with LabelMappable {
   /// Id of the project related to this custom label
   int projectId;
 
-  // TODO(Nacho): Ver si parsea como fecha, se sugirio usarlo como string...
-
   /// Date of creation of this Label
-  DateTime createdAt;
+  String createdAt;
 
-  /// Last date of modification of this Label
+  /// Last date of modification of this Label. It is a string because it came
+  /// as an unsupported format: '2023-11-29 11:37:09 UTC', cant be parsed as a
+  /// date
   @MappableField(key: 'updated_at')
   String lastTimeUpdated;
 

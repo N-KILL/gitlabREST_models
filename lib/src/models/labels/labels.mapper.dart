@@ -30,8 +30,8 @@ class LabelMapper extends ClassMapperBase<Label> {
   static int _$projectId(Label v) => v.projectId;
   static const Field<Label, int> _f$projectId =
       Field('projectId', _$projectId, key: 'project_id');
-  static DateTime _$createdAt(Label v) => v.createdAt;
-  static const Field<Label, DateTime> _f$createdAt =
+  static String _$createdAt(Label v) => v.createdAt;
+  static const Field<Label, String> _f$createdAt =
       Field('createdAt', _$createdAt, key: 'created_at');
   static String _$lastTimeUpdated(Label v) => v.lastTimeUpdated;
   static const Field<Label, String> _f$lastTimeUpdated =
@@ -133,7 +133,7 @@ abstract class LabelCopyWith<$R, $In extends Label, $Out>
       String? name,
       String? color,
       int? projectId,
-      DateTime? createdAt,
+      String? createdAt,
       String? lastTimeUpdated,
       bool? template,
       String? description,
@@ -155,7 +155,7 @@ class _LabelCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Label, $Out>
           String? name,
           String? color,
           int? projectId,
-          DateTime? createdAt,
+          String? createdAt,
           String? lastTimeUpdated,
           bool? template,
           Object? description = $none,

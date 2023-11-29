@@ -4,146 +4,144 @@
 // ignore_for_file: unused_element, unnecessary_cast
 // ignore_for_file: strict_raw_type, inference_failure_on_untyped_parameter
 
-part of 'object.dart';
+part of 'issue_details.dart';
 
-class ObjectAttributesMapper extends ClassMapperBase<ObjectAttributes> {
-  ObjectAttributesMapper._();
+class IssueDetailsMapper extends ClassMapperBase<IssueDetails> {
+  IssueDetailsMapper._();
 
-  static ObjectAttributesMapper? _instance;
-  static ObjectAttributesMapper ensureInitialized() {
+  static IssueDetailsMapper? _instance;
+  static IssueDetailsMapper ensureInitialized() {
     if (_instance == null) {
-      MapperContainer.globals.use(_instance = ObjectAttributesMapper._());
+      MapperContainer.globals.use(_instance = IssueDetailsMapper._());
       LabelMapper.ensureInitialized();
     }
     return _instance!;
   }
 
   @override
-  final String id = 'ObjectAttributes';
+  final String id = 'IssueDetails';
 
-  static int _$authorId(ObjectAttributes v) => v.authorId;
-  static const Field<ObjectAttributes, int> _f$authorId =
-      Field('authorId', _$authorId, key: 'author_id');
-  static DateTime? _$closedAt(ObjectAttributes v) => v.closedAt;
-  static const Field<ObjectAttributes, DateTime> _f$closedAt =
+  static int _$authorUserId(IssueDetails v) => v.authorUserId;
+  static const Field<IssueDetails, int> _f$authorUserId =
+      Field('authorUserId', _$authorUserId, key: 'author_id');
+  static String? _$closedAt(IssueDetails v) => v.closedAt;
+  static const Field<IssueDetails, String> _f$closedAt =
       Field('closedAt', _$closedAt, key: 'closed_at');
-  static bool _$confidential(ObjectAttributes v) => v.confidential;
-  static const Field<ObjectAttributes, bool> _f$confidential =
-      Field('confidential', _$confidential);
-  static String _$createdAt(ObjectAttributes v) => v.createdAt;
-  static const Field<ObjectAttributes, String> _f$createdAt =
-      Field('createdAt', _$createdAt, key: 'created_at');
-  static String _$description(ObjectAttributes v) => v.description;
-  static const Field<ObjectAttributes, String> _f$description =
+  static bool _$confidentialState(IssueDetails v) => v.confidentialState;
+  static const Field<IssueDetails, bool> _f$confidentialState =
+      Field('confidentialState', _$confidentialState, key: 'confidential');
+  static String _$creationDate(IssueDetails v) => v.creationDate;
+  static const Field<IssueDetails, String> _f$creationDate =
+      Field('creationDate', _$creationDate, key: 'created_at');
+  static String _$description(IssueDetails v) => v.description;
+  static const Field<IssueDetails, String> _f$description =
       Field('description', _$description);
-  static bool? _$discussionLockedStatus(ObjectAttributes v) =>
+  static bool? _$discussionLockedStatus(IssueDetails v) =>
       v.discussionLockedStatus;
-  static const Field<ObjectAttributes, bool> _f$discussionLockedStatus = Field(
+  static const Field<IssueDetails, bool> _f$discussionLockedStatus = Field(
       'discussionLockedStatus', _$discussionLockedStatus,
       key: 'discussion_locked');
-  static DateTime? _$dueDate(ObjectAttributes v) => v.dueDate;
-  static const Field<ObjectAttributes, DateTime> _f$dueDate =
+  static String? _$dueDate(IssueDetails v) => v.dueDate;
+  static const Field<IssueDetails, String> _f$dueDate =
       Field('dueDate', _$dueDate, key: 'due_date');
-  static int _$id(ObjectAttributes v) => v.id;
-  static const Field<ObjectAttributes, int> _f$id = Field('id', _$id);
-  static int _$internalId(ObjectAttributes v) => v.internalId;
-  static const Field<ObjectAttributes, int> _f$internalId =
+  static int _$id(IssueDetails v) => v.id;
+  static const Field<IssueDetails, int> _f$id = Field('id', _$id);
+  static int _$internalId(IssueDetails v) => v.internalId;
+  static const Field<IssueDetails, int> _f$internalId =
       Field('internalId', _$internalId, key: 'iid');
-  static DateTime? _$lastEditionDate(ObjectAttributes v) => v.lastEditionDate;
-  static const Field<ObjectAttributes, DateTime> _f$lastEditionDate =
+  static String? _$lastEditionDate(IssueDetails v) => v.lastEditionDate;
+  static const Field<IssueDetails, String> _f$lastEditionDate =
       Field('lastEditionDate', _$lastEditionDate, key: 'last_edited_at');
-  static int? _$lastEditedUserId(ObjectAttributes v) => v.lastEditedUserId;
-  static const Field<ObjectAttributes, int> _f$lastEditedUserId =
+  static int? _$lastEditedUserId(IssueDetails v) => v.lastEditedUserId;
+  static const Field<IssueDetails, int> _f$lastEditedUserId =
       Field('lastEditedUserId', _$lastEditedUserId, key: 'last_edited_by_id');
-  static int? _$relatedMilestoneId(ObjectAttributes v) => v.relatedMilestoneId;
-  static const Field<ObjectAttributes, int> _f$relatedMilestoneId =
+  static int? _$relatedMilestoneId(IssueDetails v) => v.relatedMilestoneId;
+  static const Field<IssueDetails, int> _f$relatedMilestoneId =
       Field('relatedMilestoneId', _$relatedMilestoneId, key: 'milestone_id');
-  static int? _$movedToId(ObjectAttributes v) => v.movedToId;
-  static const Field<ObjectAttributes, int> _f$movedToId =
+  static int? _$movedToId(IssueDetails v) => v.movedToId;
+  static const Field<IssueDetails, int> _f$movedToId =
       Field('movedToId', _$movedToId, key: 'moved_to_id');
-  static int? _$issueSimilarTo(ObjectAttributes v) => v.issueSimilarTo;
-  static const Field<ObjectAttributes, int> _f$issueSimilarTo =
+  static int? _$issueSimilarTo(IssueDetails v) => v.issueSimilarTo;
+  static const Field<IssueDetails, int> _f$issueSimilarTo =
       Field('issueSimilarTo', _$issueSimilarTo, key: 'duplicated_to_id');
-  static int _$relatedProjectId(ObjectAttributes v) => v.relatedProjectId;
-  static const Field<ObjectAttributes, int> _f$relatedProjectId =
+  static int _$relatedProjectId(IssueDetails v) => v.relatedProjectId;
+  static const Field<IssueDetails, int> _f$relatedProjectId =
       Field('relatedProjectId', _$relatedProjectId, key: 'project_id');
-  static int? _$relativePosition(ObjectAttributes v) => v.relativePosition;
-  static const Field<ObjectAttributes, int> _f$relativePosition =
+  static int? _$relativePosition(IssueDetails v) => v.relativePosition;
+  static const Field<IssueDetails, int> _f$relativePosition =
       Field('relativePosition', _$relativePosition, key: 'relative_position');
-  static int _$issueStateId(ObjectAttributes v) => v.issueStateId;
-  static const Field<ObjectAttributes, int> _f$issueStateId =
+  static int _$issueStateId(IssueDetails v) => v.issueStateId;
+  static const Field<IssueDetails, int> _f$issueStateId =
       Field('issueStateId', _$issueStateId, key: 'state_id');
-  static int _$estimatedTime(ObjectAttributes v) => v.estimatedTime;
-  static const Field<ObjectAttributes, int> _f$estimatedTime =
+  static int _$estimatedTime(IssueDetails v) => v.estimatedTime;
+  static const Field<IssueDetails, int> _f$estimatedTime =
       Field('estimatedTime', _$estimatedTime, key: 'time_estimate');
-  static String _$issueName(ObjectAttributes v) => v.issueName;
-  static const Field<ObjectAttributes, String> _f$issueName =
+  static String _$issueName(IssueDetails v) => v.issueName;
+  static const Field<IssueDetails, String> _f$issueName =
       Field('issueName', _$issueName, key: 'title');
-  static String _$lastTimeUpdated(ObjectAttributes v) => v.lastTimeUpdated;
-  static const Field<ObjectAttributes, String> _f$lastTimeUpdated =
+  static String _$lastTimeUpdated(IssueDetails v) => v.lastTimeUpdated;
+  static const Field<IssueDetails, String> _f$lastTimeUpdated =
       Field('lastTimeUpdated', _$lastTimeUpdated, key: 'updated_at');
-  static int? _$updatedUserId(ObjectAttributes v) => v.updatedUserId;
-  static const Field<ObjectAttributes, int> _f$updatedUserId =
+  static int? _$updatedUserId(IssueDetails v) => v.updatedUserId;
+  static const Field<IssueDetails, int> _f$updatedUserId =
       Field('updatedUserId', _$updatedUserId, key: 'updated_by_id');
-  static dynamic _$weight(ObjectAttributes v) => v.weight;
-  static const Field<ObjectAttributes, dynamic> _f$weight =
+  static dynamic _$weight(IssueDetails v) => v.weight;
+  static const Field<IssueDetails, dynamic> _f$weight =
       Field('weight', _$weight);
-  static String? _$healthStatus(ObjectAttributes v) => v.healthStatus;
-  static const Field<ObjectAttributes, String> _f$healthStatus =
+  static String? _$healthStatus(IssueDetails v) => v.healthStatus;
+  static const Field<IssueDetails, String> _f$healthStatus =
       Field('healthStatus', _$healthStatus, key: 'health_status');
-  static String _$issueUrl(ObjectAttributes v) => v.issueUrl;
-  static const Field<ObjectAttributes, String> _f$issueUrl =
+  static String _$issueUrl(IssueDetails v) => v.issueUrl;
+  static const Field<IssueDetails, String> _f$issueUrl =
       Field('issueUrl', _$issueUrl, key: 'url');
-  static int _$totalTimeSpent(ObjectAttributes v) => v.totalTimeSpent;
-  static const Field<ObjectAttributes, int> _f$totalTimeSpent =
+  static int _$totalTimeSpent(IssueDetails v) => v.totalTimeSpent;
+  static const Field<IssueDetails, int> _f$totalTimeSpent =
       Field('totalTimeSpent', _$totalTimeSpent, key: 'total_time_spent');
-  static int _$timeChange(ObjectAttributes v) => v.timeChange;
-  static const Field<ObjectAttributes, int> _f$timeChange =
+  static int _$timeChange(IssueDetails v) => v.timeChange;
+  static const Field<IssueDetails, int> _f$timeChange =
       Field('timeChange', _$timeChange, key: 'time_change');
-  static String? _$totalTimeSpentSimple(ObjectAttributes v) =>
+  static String? _$totalTimeSpentSimple(IssueDetails v) =>
       v.totalTimeSpentSimple;
-  static const Field<ObjectAttributes, String> _f$totalTimeSpentSimple = Field(
+  static const Field<IssueDetails, String> _f$totalTimeSpentSimple = Field(
       'totalTimeSpentSimple', _$totalTimeSpentSimple,
       key: 'human_total_time_spent');
-  static dynamic _$humanTimeChange(ObjectAttributes v) => v.humanTimeChange;
-  static const Field<ObjectAttributes, dynamic> _f$humanTimeChange =
+  static dynamic _$humanTimeChange(IssueDetails v) => v.humanTimeChange;
+  static const Field<IssueDetails, dynamic> _f$humanTimeChange =
       Field('humanTimeChange', _$humanTimeChange, key: 'human_time_change');
-  static String? _$timeEstimateSimple(ObjectAttributes v) =>
-      v.timeEstimateSimple;
-  static const Field<ObjectAttributes, String> _f$timeEstimateSimple = Field(
+  static String? _$timeEstimateSimple(IssueDetails v) => v.timeEstimateSimple;
+  static const Field<IssueDetails, String> _f$timeEstimateSimple = Field(
       'timeEstimateSimple', _$timeEstimateSimple,
       key: 'human_time_estimate');
-  static List<int> _$assignedUsersIds(ObjectAttributes v) => v.assignedUsersIds;
-  static const Field<ObjectAttributes, List<int>> _f$assignedUsersIds =
+  static List<int> _$assignedUsersIds(IssueDetails v) => v.assignedUsersIds;
+  static const Field<IssueDetails, List<int>> _f$assignedUsersIds =
       Field('assignedUsersIds', _$assignedUsersIds, key: 'assignee_ids');
-  static int? _$assigneeUserId(ObjectAttributes v) => v.assigneeUserId;
-  static const Field<ObjectAttributes, int> _f$assigneeUserId =
+  static int? _$assigneeUserId(IssueDetails v) => v.assigneeUserId;
+  static const Field<IssueDetails, int> _f$assigneeUserId =
       Field('assigneeUserId', _$assigneeUserId, key: 'assignee_id');
-  static List<Label> _$labels(ObjectAttributes v) => v.labels;
-  static const Field<ObjectAttributes, List<Label>> _f$labels =
+  static List<Label> _$labels(IssueDetails v) => v.labels;
+  static const Field<IssueDetails, List<Label>> _f$labels =
       Field('labels', _$labels);
-  static String _$issueState(ObjectAttributes v) => v.issueState;
-  static const Field<ObjectAttributes, String> _f$issueState =
+  static String _$issueState(IssueDetails v) => v.issueState;
+  static const Field<IssueDetails, String> _f$issueState =
       Field('issueState', _$issueState, key: 'state');
-  static String _$severity(ObjectAttributes v) => v.severity;
-  static const Field<ObjectAttributes, String> _f$severity =
+  static String _$severity(IssueDetails v) => v.severity;
+  static const Field<IssueDetails, String> _f$severity =
       Field('severity', _$severity);
-  static List<dynamic> _$customerRelationsContacts(ObjectAttributes v) =>
+  static List<dynamic> _$customerRelationsContacts(IssueDetails v) =>
       v.customerRelationsContacts;
-  static const Field<ObjectAttributes, List<dynamic>>
-      _f$customerRelationsContacts = Field(
-          'customerRelationsContacts', _$customerRelationsContacts,
+  static const Field<IssueDetails, List<dynamic>> _f$customerRelationsContacts =
+      Field('customerRelationsContacts', _$customerRelationsContacts,
           key: 'customer_relations_contacts');
-  static String? _$actionType(ObjectAttributes v) => v.actionType;
-  static const Field<ObjectAttributes, String> _f$actionType =
+  static String? _$actionType(IssueDetails v) => v.actionType;
+  static const Field<IssueDetails, String> _f$actionType =
       Field('actionType', _$actionType, key: 'action');
 
   @override
-  final Map<Symbol, Field<ObjectAttributes, dynamic>> fields = const {
-    #authorId: _f$authorId,
+  final Map<Symbol, Field<IssueDetails, dynamic>> fields = const {
+    #authorUserId: _f$authorUserId,
     #closedAt: _f$closedAt,
-    #confidential: _f$confidential,
-    #createdAt: _f$createdAt,
+    #confidentialState: _f$confidentialState,
+    #creationDate: _f$creationDate,
     #description: _f$description,
     #discussionLockedStatus: _f$discussionLockedStatus,
     #dueDate: _f$dueDate,
@@ -178,12 +176,12 @@ class ObjectAttributesMapper extends ClassMapperBase<ObjectAttributes> {
     #actionType: _f$actionType,
   };
 
-  static ObjectAttributes _instantiate(DecodingData data) {
-    return ObjectAttributes(
-        authorId: data.dec(_f$authorId),
+  static IssueDetails _instantiate(DecodingData data) {
+    return IssueDetails(
+        authorUserId: data.dec(_f$authorUserId),
         closedAt: data.dec(_f$closedAt),
-        confidential: data.dec(_f$confidential),
-        createdAt: data.dec(_f$createdAt),
+        confidentialState: data.dec(_f$confidentialState),
+        creationDate: data.dec(_f$creationDate),
         description: data.dec(_f$description),
         discussionLockedStatus: data.dec(_f$discussionLockedStatus),
         dueDate: data.dec(_f$dueDate),
@@ -221,74 +219,72 @@ class ObjectAttributesMapper extends ClassMapperBase<ObjectAttributes> {
   @override
   final Function instantiate = _instantiate;
 
-  static ObjectAttributes fromMap(Map<String, dynamic> map) {
-    return ensureInitialized().decodeMap<ObjectAttributes>(map);
+  static IssueDetails fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<IssueDetails>(map);
   }
 
-  static ObjectAttributes fromJson(String json) {
-    return ensureInitialized().decodeJson<ObjectAttributes>(json);
+  static IssueDetails fromJson(String json) {
+    return ensureInitialized().decodeJson<IssueDetails>(json);
   }
 }
 
-mixin ObjectAttributesMappable {
+mixin IssueDetailsMappable {
   String toJson() {
-    return ObjectAttributesMapper.ensureInitialized()
-        .encodeJson<ObjectAttributes>(this as ObjectAttributes);
+    return IssueDetailsMapper.ensureInitialized()
+        .encodeJson<IssueDetails>(this as IssueDetails);
   }
 
   Map<String, dynamic> toMap() {
-    return ObjectAttributesMapper.ensureInitialized()
-        .encodeMap<ObjectAttributes>(this as ObjectAttributes);
+    return IssueDetailsMapper.ensureInitialized()
+        .encodeMap<IssueDetails>(this as IssueDetails);
   }
 
-  ObjectAttributesCopyWith<ObjectAttributes, ObjectAttributes, ObjectAttributes>
-      get copyWith => _ObjectAttributesCopyWithImpl(
-          this as ObjectAttributes, $identity, $identity);
+  IssueDetailsCopyWith<IssueDetails, IssueDetails, IssueDetails> get copyWith =>
+      _IssueDetailsCopyWithImpl(this as IssueDetails, $identity, $identity);
   @override
   String toString() {
-    return ObjectAttributesMapper.ensureInitialized()
-        .stringifyValue(this as ObjectAttributes);
+    return IssueDetailsMapper.ensureInitialized()
+        .stringifyValue(this as IssueDetails);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (runtimeType == other.runtimeType &&
-            ObjectAttributesMapper.ensureInitialized()
-                .isValueEqual(this as ObjectAttributes, other));
+            IssueDetailsMapper.ensureInitialized()
+                .isValueEqual(this as IssueDetails, other));
   }
 
   @override
   int get hashCode {
-    return ObjectAttributesMapper.ensureInitialized()
-        .hashValue(this as ObjectAttributes);
+    return IssueDetailsMapper.ensureInitialized()
+        .hashValue(this as IssueDetails);
   }
 }
 
-extension ObjectAttributesValueCopy<$R, $Out>
-    on ObjectCopyWith<$R, ObjectAttributes, $Out> {
-  ObjectAttributesCopyWith<$R, ObjectAttributes, $Out>
-      get $asObjectAttributes =>
-          $base.as((v, t, t2) => _ObjectAttributesCopyWithImpl(v, t, t2));
+extension IssueDetailsValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, IssueDetails, $Out> {
+  IssueDetailsCopyWith<$R, IssueDetails, $Out> get $asIssueDetails =>
+      $base.as((v, t, t2) => _IssueDetailsCopyWithImpl(v, t, t2));
 }
 
-abstract class ObjectAttributesCopyWith<$R, $In extends ObjectAttributes, $Out>
+abstract class IssueDetailsCopyWith<$R, $In extends IssueDetails, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
   ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>> get assignedUsersIds;
   ListCopyWith<$R, Label, LabelCopyWith<$R, Label, Label>> get labels;
   ListCopyWith<$R, dynamic, ObjectCopyWith<$R, dynamic, dynamic>>
       get customerRelationsContacts;
   $R call(
-      {int? authorId,
-      DateTime? closedAt,
-      bool? confidential,
-      String? createdAt,
+      {int? authorUserId,
+      String? closedAt,
+      bool? confidentialState,
+      String? creationDate,
       String? description,
       bool? discussionLockedStatus,
-      DateTime? dueDate,
+      String? dueDate,
       int? id,
       int? internalId,
-      DateTime? lastEditionDate,
+      String? lastEditionDate,
       int? lastEditedUserId,
       int? relatedMilestoneId,
       int? movedToId,
@@ -315,18 +311,17 @@ abstract class ObjectAttributesCopyWith<$R, $In extends ObjectAttributes, $Out>
       String? severity,
       List<dynamic>? customerRelationsContacts,
       String? actionType});
-  ObjectAttributesCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
-      Then<$Out2, $R2> t);
+  IssueDetailsCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
-class _ObjectAttributesCopyWithImpl<$R, $Out>
-    extends ClassCopyWithBase<$R, ObjectAttributes, $Out>
-    implements ObjectAttributesCopyWith<$R, ObjectAttributes, $Out> {
-  _ObjectAttributesCopyWithImpl(super.value, super.then, super.then2);
+class _IssueDetailsCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, IssueDetails, $Out>
+    implements IssueDetailsCopyWith<$R, IssueDetails, $Out> {
+  _IssueDetailsCopyWithImpl(super.value, super.then, super.then2);
 
   @override
-  late final ClassMapperBase<ObjectAttributes> $mapper =
-      ObjectAttributesMapper.ensureInitialized();
+  late final ClassMapperBase<IssueDetails> $mapper =
+      IssueDetailsMapper.ensureInitialized();
   @override
   ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>> get assignedUsersIds =>
       ListCopyWith(
@@ -345,10 +340,10 @@ class _ObjectAttributesCopyWithImpl<$R, $Out>
           (v) => call(customerRelationsContacts: v));
   @override
   $R call(
-          {int? authorId,
+          {int? authorUserId,
           Object? closedAt = $none,
-          bool? confidential,
-          String? createdAt,
+          bool? confidentialState,
+          String? creationDate,
           String? description,
           Object? discussionLockedStatus = $none,
           Object? dueDate = $none,
@@ -382,10 +377,10 @@ class _ObjectAttributesCopyWithImpl<$R, $Out>
           List<dynamic>? customerRelationsContacts,
           Object? actionType = $none}) =>
       $apply(FieldCopyWithData({
-        if (authorId != null) #authorId: authorId,
+        if (authorUserId != null) #authorUserId: authorUserId,
         if (closedAt != $none) #closedAt: closedAt,
-        if (confidential != null) #confidential: confidential,
-        if (createdAt != null) #createdAt: createdAt,
+        if (confidentialState != null) #confidentialState: confidentialState,
+        if (creationDate != null) #creationDate: creationDate,
         if (description != null) #description: description,
         if (discussionLockedStatus != $none)
           #discussionLockedStatus: discussionLockedStatus,
@@ -425,11 +420,12 @@ class _ObjectAttributesCopyWithImpl<$R, $Out>
         if (actionType != $none) #actionType: actionType
       }));
   @override
-  ObjectAttributes $make(CopyWithData data) => ObjectAttributes(
-      authorId: data.get(#authorId, or: $value.authorId),
+  IssueDetails $make(CopyWithData data) => IssueDetails(
+      authorUserId: data.get(#authorUserId, or: $value.authorUserId),
       closedAt: data.get(#closedAt, or: $value.closedAt),
-      confidential: data.get(#confidential, or: $value.confidential),
-      createdAt: data.get(#createdAt, or: $value.createdAt),
+      confidentialState:
+          data.get(#confidentialState, or: $value.confidentialState),
+      creationDate: data.get(#creationDate, or: $value.creationDate),
       description: data.get(#description, or: $value.description),
       discussionLockedStatus:
           data.get(#discussionLockedStatus, or: $value.discussionLockedStatus),
@@ -473,7 +469,7 @@ class _ObjectAttributesCopyWithImpl<$R, $Out>
       actionType: data.get(#actionType, or: $value.actionType));
 
   @override
-  ObjectAttributesCopyWith<$R2, ObjectAttributes, $Out2> $chain<$R2, $Out2>(
+  IssueDetailsCopyWith<$R2, IssueDetails, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _ObjectAttributesCopyWithImpl($value, $cast, t);
+      _IssueDetailsCopyWithImpl($value, $cast, t);
 }

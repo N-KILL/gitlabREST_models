@@ -1,7 +1,7 @@
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:gitlab_rest_models/src/models/change/change.dart';
+import 'package:gitlab_rest_models/src/models/issue_details/issue_details.dart';
 import 'package:gitlab_rest_models/src/models/labels/labels.dart';
-import 'package:gitlab_rest_models/src/models/object/object.dart';
 import 'package:gitlab_rest_models/src/models/project/project.dart';
 import 'package:gitlab_rest_models/src/models/repository/repository.dart';
 import 'package:gitlab_rest_models/src/models/user/gitlab_user.dart';
@@ -20,7 +20,7 @@ class GitLabIssuePayload with GitLabIssuePayloadMappable {
     required this.eventType,
     required this.performer,
     required this.projectDetails,
-    required this.objectAttributes,
+    required this.issueDetails,
     required this.labels,
     required this.changes,
     required this.relatedRepository,
@@ -46,7 +46,8 @@ class GitLabIssuePayload with GitLabIssuePayloadMappable {
   // TODO(Nacho): Renombar cuando se tenga definido bien que seria (issueData?)
 
   /// This brings all the data  related to th issue
-  ObjectAttributes objectAttributes;
+  @MappableField(key: 'object_attributes')
+  IssueDetails issueDetails;
 
   /// Labels related to the issue
   List<Label> labels;

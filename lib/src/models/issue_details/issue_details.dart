@@ -3,17 +3,19 @@ import 'package:gitlab_rest_models/src/models/labels/labels.dart';
 
 // TODO(Nacho): Resolver valores dinamico
 
-part 'object.mapper.dart';
+part 'issue_details.mapper.dart';
 
-///
+/// This class is used to map the details of an issue from the GitLab Webhooks,
+/// for more info about GitLab Webhooks, check this doc:
+/// https://docs.gitlab.com/ee/user/project/integrations/webhook_events.html
 @MappableClass(caseStyle: CaseStyle.snakeCase)
-class ObjectAttributes with ObjectAttributesMappable {
-  ///
-  ObjectAttributes({
-    required this.authorId,
+class IssueDetails with IssueDetailsMappable {
+  /// IssueDetails Class constructor
+  IssueDetails({
+    required this.authorUserId,
     required this.closedAt,
-    required this.confidential,
-    required this.createdAt,
+    required this.confidentialState,
+    required this.creationDate,
     required this.description,
     required this.discussionLockedStatus,
     required this.dueDate,
@@ -48,19 +50,30 @@ class ObjectAttributes with ObjectAttributesMappable {
     required this.actionType,
   });
 
-  ///
-  int authorId;
+  /// Id of the user GitLab account that create the issue 
+  @MappableField(key: 'author_id')
+  int authorUserId;
 
-  ///
-  DateTime? closedAt;
+  /// Date when the issue was marked as closed
+  String? closedAt;
 
-  ///
-  bool confidential;
+  /// Boolean value that indicates if is confidential or not, Confidential 
+  /// issues are issues visible only to members of a project with sufficient 
+  /// permissions, for more info:
+  /// https://docs.gitlab.com/ee/user/project/issues/confidential_issues.html
+  @MappableField(key: 'confidential')
+  bool confidentialState;
 
-  ///
-  String createdAt;
+  // TODO(Nacho): Ver si hace falta hacer algo que parsee la fecha correctamente
 
-  ///
+  /// String with the creation date of the issue, it is a string because it came
+  /// as an unsupported format: '2023-11-29 11:37:09 UTC', cant be parsed at
+  /// date 
+  @MappableField(key: 'created_at')
+  String creationDate;
+
+  /// This is the description of the issue, it can came as an empty string: "" 
+  /// if the issue have no description on it
   String description;
 
   /// Bool value who indicate if the issue is locked or not. If the issue is new
@@ -70,8 +83,9 @@ class ObjectAttributes with ObjectAttributesMappable {
   bool? discussionLockedStatus;
 
   /// If the Issue have a due date this will be here, if it not have one this
-  /// value will be null
-  DateTime? dueDate;
+  /// value will be null. It is a string because it came as an unsupported 
+  /// format: '2023-11-29 11:37:09 UTC', cant be parsed at date 
+  String? dueDate;
 
   /// Id of the issue, this value is used to identify the issue. As any id it is
   /// unique
@@ -85,9 +99,10 @@ class ObjectAttributes with ObjectAttributesMappable {
   int internalId;
 
   /// This value is the las date of edition, it can came as a null value
-  /// if the issue is new
+  /// if the issue is new. It is a string because it came as an unsupported 
+  /// format: '2023-11-29 11:37:09 UTC', cant be parsed at date 
   @MappableField(key: 'last_edited_at')
-  DateTime? lastEditionDate;
+  String? lastEditionDate;
 
   /// This value will save the id of the user who perform the last edition
   /// to the issue. )
@@ -137,8 +152,6 @@ class ObjectAttributes with ObjectAttributesMappable {
   /// Is the name of the issue
   @MappableField(key: 'title')
   String issueName;
-
-  // TODO(Nacho): Ver si esta fecha se parsea o rompe
 
   /// Last time this issue receive an update 
   @MappableField(key: 'updated_at')
@@ -215,7 +228,7 @@ class ObjectAttributes with ObjectAttributesMappable {
   @MappableField(key: 'action')
   String? actionType;
 
-  /// FromJson method, convert a json type object into this ObjectAttributes
+  /// FromJson method, convert a json type object into this IssueDetails
   /// Object
-  static const fromJson = ObjectAttributesMapper.fromJson;
+  static const fromJson = IssueDetailsMapper.fromJson;
 }

@@ -15,7 +15,7 @@ class GitLabIssuePayloadMapper extends ClassMapperBase<GitLabIssuePayload> {
       MapperContainer.globals.use(_instance = GitLabIssuePayloadMapper._());
       GitLabUserMapper.ensureInitialized();
       GitLabProjectMapper.ensureInitialized();
-      ObjectAttributesMapper.ensureInitialized();
+      IssueDetailsMapper.ensureInitialized();
       LabelMapper.ensureInitialized();
       ChangesMapper.ensureInitialized();
       GitLabRepositoryMapper.ensureInitialized();
@@ -39,10 +39,9 @@ class GitLabIssuePayloadMapper extends ClassMapperBase<GitLabIssuePayload> {
       v.projectDetails;
   static const Field<GitLabIssuePayload, GitLabProject> _f$projectDetails =
       Field('projectDetails', _$projectDetails, key: 'project');
-  static ObjectAttributes _$objectAttributes(GitLabIssuePayload v) =>
-      v.objectAttributes;
-  static const Field<GitLabIssuePayload, ObjectAttributes> _f$objectAttributes =
-      Field('objectAttributes', _$objectAttributes, key: 'object_attributes');
+  static IssueDetails _$issueDetails(GitLabIssuePayload v) => v.issueDetails;
+  static const Field<GitLabIssuePayload, IssueDetails> _f$issueDetails =
+      Field('issueDetails', _$issueDetails, key: 'object_attributes');
   static List<Label> _$labels(GitLabIssuePayload v) => v.labels;
   static const Field<GitLabIssuePayload, List<Label>> _f$labels =
       Field('labels', _$labels);
@@ -61,7 +60,7 @@ class GitLabIssuePayloadMapper extends ClassMapperBase<GitLabIssuePayload> {
     #eventType: _f$eventType,
     #performer: _f$performer,
     #projectDetails: _f$projectDetails,
-    #objectAttributes: _f$objectAttributes,
+    #issueDetails: _f$issueDetails,
     #labels: _f$labels,
     #changes: _f$changes,
     #relatedRepository: _f$relatedRepository,
@@ -73,7 +72,7 @@ class GitLabIssuePayloadMapper extends ClassMapperBase<GitLabIssuePayload> {
         eventType: data.dec(_f$eventType),
         performer: data.dec(_f$performer),
         projectDetails: data.dec(_f$projectDetails),
-        objectAttributes: data.dec(_f$objectAttributes),
+        issueDetails: data.dec(_f$issueDetails),
         labels: data.dec(_f$labels),
         changes: data.dec(_f$changes),
         relatedRepository: data.dec(_f$relatedRepository));
@@ -138,8 +137,7 @@ abstract class GitLabIssuePayloadCopyWith<$R, $In extends GitLabIssuePayload,
     $Out> implements ClassCopyWith<$R, $In, $Out> {
   GitLabUserCopyWith<$R, GitLabUser, GitLabUser> get performer;
   GitLabProjectCopyWith<$R, GitLabProject, GitLabProject> get projectDetails;
-  ObjectAttributesCopyWith<$R, ObjectAttributes, ObjectAttributes>
-      get objectAttributes;
+  IssueDetailsCopyWith<$R, IssueDetails, IssueDetails> get issueDetails;
   ListCopyWith<$R, Label, LabelCopyWith<$R, Label, Label>> get labels;
   ChangesCopyWith<$R, Changes, Changes> get changes;
   GitLabRepositoryCopyWith<$R, GitLabRepository, GitLabRepository>
@@ -149,7 +147,7 @@ abstract class GitLabIssuePayloadCopyWith<$R, $In extends GitLabIssuePayload,
       String? eventType,
       GitLabUser? performer,
       GitLabProject? projectDetails,
-      ObjectAttributes? objectAttributes,
+      IssueDetails? issueDetails,
       List<Label>? labels,
       Changes? changes,
       GitLabRepository? relatedRepository});
@@ -172,9 +170,8 @@ class _GitLabIssuePayloadCopyWithImpl<$R, $Out>
   GitLabProjectCopyWith<$R, GitLabProject, GitLabProject> get projectDetails =>
       $value.projectDetails.copyWith.$chain((v) => call(projectDetails: v));
   @override
-  ObjectAttributesCopyWith<$R, ObjectAttributes, ObjectAttributes>
-      get objectAttributes => $value.objectAttributes.copyWith
-          .$chain((v) => call(objectAttributes: v));
+  IssueDetailsCopyWith<$R, IssueDetails, IssueDetails> get issueDetails =>
+      $value.issueDetails.copyWith.$chain((v) => call(issueDetails: v));
   @override
   ListCopyWith<$R, Label, LabelCopyWith<$R, Label, Label>> get labels =>
       ListCopyWith($value.labels, (v, t) => v.copyWith.$chain(t),
@@ -192,7 +189,7 @@ class _GitLabIssuePayloadCopyWithImpl<$R, $Out>
           String? eventType,
           GitLabUser? performer,
           GitLabProject? projectDetails,
-          ObjectAttributes? objectAttributes,
+          IssueDetails? issueDetails,
           List<Label>? labels,
           Changes? changes,
           GitLabRepository? relatedRepository}) =>
@@ -201,7 +198,7 @@ class _GitLabIssuePayloadCopyWithImpl<$R, $Out>
         if (eventType != null) #eventType: eventType,
         if (performer != null) #performer: performer,
         if (projectDetails != null) #projectDetails: projectDetails,
-        if (objectAttributes != null) #objectAttributes: objectAttributes,
+        if (issueDetails != null) #issueDetails: issueDetails,
         if (labels != null) #labels: labels,
         if (changes != null) #changes: changes,
         if (relatedRepository != null) #relatedRepository: relatedRepository
@@ -212,8 +209,7 @@ class _GitLabIssuePayloadCopyWithImpl<$R, $Out>
       eventType: data.get(#eventType, or: $value.eventType),
       performer: data.get(#performer, or: $value.performer),
       projectDetails: data.get(#projectDetails, or: $value.projectDetails),
-      objectAttributes:
-          data.get(#objectAttributes, or: $value.objectAttributes),
+      issueDetails: data.get(#issueDetails, or: $value.issueDetails),
       labels: data.get(#labels, or: $value.labels),
       changes: data.get(#changes, or: $value.changes),
       relatedRepository:

@@ -30,15 +30,16 @@ class GitLabRepositoryMapper extends ClassMapperBase<GitLabRepository> {
   static String _$homepageUrl(GitLabRepository v) => v.homepageUrl;
   static const Field<GitLabRepository, String> _f$homepageUrl =
       Field('homepageUrl', _$homepageUrl, key: 'homepage');
-  static String _$gitHttpUrl(GitLabRepository v) => v.gitHttpUrl;
+  static String? _$gitHttpUrl(GitLabRepository v) => v.gitHttpUrl;
   static const Field<GitLabRepository, String> _f$gitHttpUrl =
-      Field('gitHttpUrl', _$gitHttpUrl, key: 'git_http_url');
-  static String _$gitSshUrl(GitLabRepository v) => v.gitSshUrl;
+      Field('gitHttpUrl', _$gitHttpUrl, key: 'git_http_url', opt: true);
+  static String? _$gitSshUrl(GitLabRepository v) => v.gitSshUrl;
   static const Field<GitLabRepository, String> _f$gitSshUrl =
-      Field('gitSshUrl', _$gitSshUrl, key: 'git_ssh_url');
-  static int _$visibilityLevel(GitLabRepository v) => v.visibilityLevel;
-  static const Field<GitLabRepository, int> _f$visibilityLevel =
-      Field('visibilityLevel', _$visibilityLevel, key: 'visibility_level');
+      Field('gitSshUrl', _$gitSshUrl, key: 'git_ssh_url', opt: true);
+  static int? _$visibilityLevel(GitLabRepository v) => v.visibilityLevel;
+  static const Field<GitLabRepository, int> _f$visibilityLevel = Field(
+      'visibilityLevel', _$visibilityLevel,
+      key: 'visibility_level', opt: true);
 
   @override
   final Map<Symbol, Field<GitLabRepository, dynamic>> fields = const {
@@ -144,17 +145,17 @@ class _GitLabRepositoryCopyWithImpl<$R, $Out>
           String? url,
           Object? description = $none,
           String? homepageUrl,
-          String? gitHttpUrl,
-          String? gitSshUrl,
-          int? visibilityLevel}) =>
+          Object? gitHttpUrl = $none,
+          Object? gitSshUrl = $none,
+          Object? visibilityLevel = $none}) =>
       $apply(FieldCopyWithData({
         if (name != null) #name: name,
         if (url != null) #url: url,
         if (description != $none) #description: description,
         if (homepageUrl != null) #homepageUrl: homepageUrl,
-        if (gitHttpUrl != null) #gitHttpUrl: gitHttpUrl,
-        if (gitSshUrl != null) #gitSshUrl: gitSshUrl,
-        if (visibilityLevel != null) #visibilityLevel: visibilityLevel
+        if (gitHttpUrl != $none) #gitHttpUrl: gitHttpUrl,
+        if (gitSshUrl != $none) #gitSshUrl: gitSshUrl,
+        if (visibilityLevel != $none) #visibilityLevel: visibilityLevel
       }));
   @override
   GitLabRepository $make(CopyWithData data) => GitLabRepository(

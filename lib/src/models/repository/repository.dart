@@ -12,9 +12,9 @@ class GitLabRepository with GitLabRepositoryMappable {
     required this.url,
     required this.description,
     required this.homepageUrl,
-    required this.gitHttpUrl,
-    required this.gitSshUrl,
-    required this.visibilityLevel,
+    this.gitHttpUrl,
+    this.gitSshUrl,
+    this.visibilityLevel,
   });
 
   /// Its the name of the repository
@@ -31,10 +31,10 @@ class GitLabRepository with GitLabRepositoryMappable {
   String homepageUrl;
 
   /// http url to the gitlab repository endpoint
-  String gitHttpUrl;
+  String? gitHttpUrl;
 
   /// ssh url to the gitlab repository endpoint
-  String gitSshUrl;
+  String? gitSshUrl;
 
   /// This value indicate the visibility privacy of the repository, according
   /// to this values:
@@ -42,7 +42,7 @@ class GitLabRepository with GitLabRepositoryMappable {
   /// internal(10) an entity is visible to authenticated users
   /// private(0) an entity is visible only to the approved members of the entity
   /// https://docs.gitlab.com/ee/development/permissions/predefined_roles.html#:~:text=Groups%20and%20Projects-,General%20permissions,approved%20members%20of%20the%20entity
-  int visibilityLevel;
+  int? visibilityLevel;
 
   /// FromJson method, convert a json type object into this GitLabRepository
   /// Object

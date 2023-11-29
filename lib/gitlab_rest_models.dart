@@ -2,4 +2,4 @@
 library gitlab_rest_models;
 
 export 'src/gitlab_rest_models.dart';
-export 'src/models/gitlab_payload.dart';
+export 'src/helpers/gitlab_mapper.dart';

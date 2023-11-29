@@ -45,6 +45,7 @@ class ObjectAttributes with ObjectAttributesMappable {
     required this.issueState,
     required this.severity,
     required this.customerRelationsContacts,
+    required this.actionType,
   });
 
   ///
@@ -208,6 +209,11 @@ class ObjectAttributes with ObjectAttributesMappable {
 
   ///
   List<dynamic> customerRelationsContacts;
+
+  /// This value storage the type of action realized on this payload (Can be
+  /// null depending on the action)
+  @MappableField(key: 'action')
+  String? actionType;
 
   /// FromJson method, convert a json type object into this ObjectAttributes
   /// Object

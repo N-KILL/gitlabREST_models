@@ -2,7 +2,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 
 part 'author.mapper.dart';
 
-// TODO(Nacho): Documentar 
+// TODO(Nacho): Create doc here
 
 ///
 @MappableClass(caseStyle: CaseStyle.snakeCase)

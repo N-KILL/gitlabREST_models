@@ -46,7 +46,7 @@ class Label with LabelMappable {
   @MappableField(key: 'updated_at')
   String lastTimeUpdated;
 
-  // TODO(Nacho): Verificar esta doc
+  // TODO(Nacho): Discover how this value works on gitlab
 
   ///
   bool template;

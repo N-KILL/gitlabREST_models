@@ -19,7 +19,7 @@ dynamic gitLabWebhookMapper({
   } else if (objectKind == 'push') {
     return GitLabPayload.fromJson(jsonPayload);
   } else {
-    // TODO (Nacho): Ver los demas tipos que pueden venir
+    // TODO(Nacho): Create all the types
     return null;
   }
 }

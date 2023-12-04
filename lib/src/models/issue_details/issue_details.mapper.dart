@@ -67,9 +67,11 @@ class IssueDetailsMapper extends ClassMapperBase<IssueDetails> {
   static int _$relatedProjectId(IssueDetails v) => v.relatedProjectId;
   static const Field<IssueDetails, int> _f$relatedProjectId =
       Field('relatedProjectId', _$relatedProjectId, key: 'project_id');
-  static int? _$relativePosition(IssueDetails v) => v.relativePosition;
-  static const Field<IssueDetails, int> _f$relativePosition =
-      Field('relativePosition', _$relativePosition, key: 'relative_position');
+  static int? _$issueBoardRelativePosition(IssueDetails v) =>
+      v.issueBoardRelativePosition;
+  static const Field<IssueDetails, int> _f$issueBoardRelativePosition = Field(
+      'issueBoardRelativePosition', _$issueBoardRelativePosition,
+      key: 'relative_position');
   static int _$issueStateId(IssueDetails v) => v.issueStateId;
   static const Field<IssueDetails, int> _f$issueStateId =
       Field('issueStateId', _$issueStateId, key: 'state_id');
@@ -153,7 +155,7 @@ class IssueDetailsMapper extends ClassMapperBase<IssueDetails> {
     #movedToId: _f$movedToId,
     #issueSimilarTo: _f$issueSimilarTo,
     #relatedProjectId: _f$relatedProjectId,
-    #relativePosition: _f$relativePosition,
+    #issueBoardRelativePosition: _f$issueBoardRelativePosition,
     #issueStateId: _f$issueStateId,
     #estimatedTime: _f$estimatedTime,
     #issueName: _f$issueName,
@@ -193,7 +195,7 @@ class IssueDetailsMapper extends ClassMapperBase<IssueDetails> {
         movedToId: data.dec(_f$movedToId),
         issueSimilarTo: data.dec(_f$issueSimilarTo),
         relatedProjectId: data.dec(_f$relatedProjectId),
-        relativePosition: data.dec(_f$relativePosition),
+        issueBoardRelativePosition: data.dec(_f$issueBoardRelativePosition),
         issueStateId: data.dec(_f$issueStateId),
         estimatedTime: data.dec(_f$estimatedTime),
         issueName: data.dec(_f$issueName),
@@ -290,7 +292,7 @@ abstract class IssueDetailsCopyWith<$R, $In extends IssueDetails, $Out>
       int? movedToId,
       int? issueSimilarTo,
       int? relatedProjectId,
-      int? relativePosition,
+      int? issueBoardRelativePosition,
       int? issueStateId,
       int? estimatedTime,
       String? issueName,
@@ -355,7 +357,7 @@ class _IssueDetailsCopyWithImpl<$R, $Out>
           Object? movedToId = $none,
           Object? issueSimilarTo = $none,
           int? relatedProjectId,
-          Object? relativePosition = $none,
+          Object? issueBoardRelativePosition = $none,
           int? issueStateId,
           int? estimatedTime,
           String? issueName,
@@ -394,7 +396,8 @@ class _IssueDetailsCopyWithImpl<$R, $Out>
         if (movedToId != $none) #movedToId: movedToId,
         if (issueSimilarTo != $none) #issueSimilarTo: issueSimilarTo,
         if (relatedProjectId != null) #relatedProjectId: relatedProjectId,
-        if (relativePosition != $none) #relativePosition: relativePosition,
+        if (issueBoardRelativePosition != $none)
+          #issueBoardRelativePosition: issueBoardRelativePosition,
         if (issueStateId != null) #issueStateId: issueStateId,
         if (estimatedTime != null) #estimatedTime: estimatedTime,
         if (issueName != null) #issueName: issueName,
@@ -441,8 +444,8 @@ class _IssueDetailsCopyWithImpl<$R, $Out>
       issueSimilarTo: data.get(#issueSimilarTo, or: $value.issueSimilarTo),
       relatedProjectId:
           data.get(#relatedProjectId, or: $value.relatedProjectId),
-      relativePosition:
-          data.get(#relativePosition, or: $value.relativePosition),
+      issueBoardRelativePosition: data.get(#issueBoardRelativePosition,
+          or: $value.issueBoardRelativePosition),
       issueStateId: data.get(#issueStateId, or: $value.issueStateId),
       estimatedTime: data.get(#estimatedTime, or: $value.estimatedTime),
       issueName: data.get(#issueName, or: $value.issueName),

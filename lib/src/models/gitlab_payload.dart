@@ -66,7 +66,7 @@ class GitLabPayload with GitLabPayloadMappable {
   /// Its the SHA code after this commit
   String checkoutSha;
 
-  // TODO(Nacho): Ver cuando se genera el mensaje
+  // TODO(Nacho): Test message and then create the doc
   ///
   String? message;
 
@@ -107,7 +107,7 @@ class GitLabPayload with GitLabPayloadMappable {
   @MappableField(key: 'total_commits_count')
   int commitAmount;
 
-  // TODO(Nacho): Ver que trae este valor
+  // TODO(Nacho): What is this value?
 
   ///
   // PushOptions pushOptions;

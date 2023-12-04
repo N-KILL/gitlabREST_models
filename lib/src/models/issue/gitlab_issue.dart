@@ -43,8 +43,6 @@ class GitLabIssuePayload with GitLabIssuePayloadMappable {
   @MappableField(key: 'project')
   GitLabProject projectDetails;
 
-  // TODO(Nacho): Renombar cuando se tenga definido bien que seria (issueData?)
-
   /// This brings all the data  related to th issue
   @MappableField(key: 'object_attributes')
   IssueDetails issueDetails;

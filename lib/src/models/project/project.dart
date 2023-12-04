@@ -2,8 +2,6 @@ import 'package:dart_mappable/dart_mappable.dart';
 
 part 'project.mapper.dart';
 
-// TODO(Nacho): Documentar
-
 /// This mappable model GitLabProject is used to map a gitlab webhook
 /// project information
 @MappableClass(caseStyle: CaseStyle.snakeCase)

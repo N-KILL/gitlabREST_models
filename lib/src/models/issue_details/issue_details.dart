@@ -1,13 +1,14 @@
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:gitlab_rest_models/src/models/labels/labels.dart';
 
-// TODO(Nacho): Resolver valores dinamico
+// TODO(Nacho): Solve "dynamic" values
 
 part 'issue_details.mapper.dart';
 
 /// This class is used to map the details of an issue from the GitLab Webhooks,
 /// for more info about GitLab Webhooks, check this doc:
 /// https://docs.gitlab.com/ee/user/project/integrations/webhook_events.html
+/// https://docs.gitlab.com/ee/user/project/issues/
 @MappableClass(caseStyle: CaseStyle.snakeCase)
 class IssueDetails with IssueDetailsMappable {
   /// IssueDetails Class constructor
@@ -27,7 +28,7 @@ class IssueDetails with IssueDetailsMappable {
     required this.movedToId,
     required this.issueSimilarTo,
     required this.relatedProjectId,
-    required this.relativePosition,
+    required this.issueBoardRelativePosition,
     required this.issueStateId,
     required this.estimatedTime,
     required this.issueName,
@@ -50,29 +51,27 @@ class IssueDetails with IssueDetailsMappable {
     required this.actionType,
   });
 
-  /// Id of the user GitLab account that create the issue 
+  /// Id of the user GitLab account that create the issue
   @MappableField(key: 'author_id')
   int authorUserId;
 
   /// Date when the issue was marked as closed
   String? closedAt;
 
-  /// Boolean value that indicates if is confidential or not, Confidential 
-  /// issues are issues visible only to members of a project with sufficient 
+  /// Boolean value that indicates if is confidential or not, Confidential
+  /// issues are issues visible only to members of a project with sufficient
   /// permissions, for more info:
   /// https://docs.gitlab.com/ee/user/project/issues/confidential_issues.html
   @MappableField(key: 'confidential')
   bool confidentialState;
 
-  // TODO(Nacho): Ver si hace falta hacer algo que parsee la fecha correctamente
-
   /// String with the creation date of the issue, it is a string because it came
   /// as an unsupported format: '2023-11-29 11:37:09 UTC', cant be parsed at
-  /// date 
+  /// date
   @MappableField(key: 'created_at')
   String creationDate;
 
-  /// This is the description of the issue, it can came as an empty string: "" 
+  /// This is the description of the issue, it can came as an empty string: ""
   /// if the issue have no description on it
   String description;
 
@@ -83,8 +82,8 @@ class IssueDetails with IssueDetailsMappable {
   bool? discussionLockedStatus;
 
   /// If the Issue have a due date this will be here, if it not have one this
-  /// value will be null. It is a string because it came as an unsupported 
-  /// format: '2023-11-29 11:37:09 UTC', cant be parsed at date 
+  /// value will be null. It is a string because it came as an unsupported
+  /// format: '2023-11-29 11:37:09 UTC', cant be parsed at date
   String? dueDate;
 
   /// Id of the issue, this value is used to identify the issue. As any id it is
@@ -99,8 +98,8 @@ class IssueDetails with IssueDetailsMappable {
   int internalId;
 
   /// This value is the las date of edition, it can came as a null value
-  /// if the issue is new. It is a string because it came as an unsupported 
-  /// format: '2023-11-29 11:37:09 UTC', cant be parsed at date 
+  /// if the issue is new. It is a string because it came as an unsupported
+  /// format: '2023-11-29 11:37:09 UTC', cant be parsed at date
   @MappableField(key: 'last_edited_at')
   String? lastEditionDate;
 
@@ -114,7 +113,7 @@ class IssueDetails with IssueDetailsMappable {
   @MappableField(key: 'milestone_id')
   int? relatedMilestoneId;
 
-  // TODO(Nacho): Verificar esta doc
+  // TODO(Nacho): Verify this doc
 
   /// This value indicates when the issue is moved into another project, it will
   /// show the id of this other project
@@ -131,20 +130,21 @@ class IssueDetails with IssueDetailsMappable {
   @MappableField(key: 'project_id')
   int relatedProjectId;
 
-  /// When an issue is created the system assigns a relative position order 
-  /// value that is greater than the maximum value of that issue’s project or 
-  /// root group. This means the issue is at the bottom of any issue list that 
-  /// it appears in. For more info about: 
+  /// When an issue is created the system assigns a relative position order
+  /// value that is greater than the maximum value of that issue’s project or
+  /// root group. This means the issue is at the bottom of any issue list that
+  /// it appears in. For more info about:
   /// https://docs.gitlab.com/ee/user/project/issue_board.html
-  int? relativePosition;
+  @MappableField(key: 'relative_position')
+  int? issueBoardRelativePosition;
 
-  /// Issue State indicates if the issue can be open or closed based on his 
+  /// Issue State indicates if the issue can be open or closed based on his
   /// value: 1 - open, 2 - closed
   @MappableField(key: 'state_id')
   int issueStateId;
 
-  /// Estimated time is a value that indicated the estimated time assigned to 
-  /// the issue on GitLab. This value came on seconds. 
+  /// Estimated time is a value that indicated the estimated time assigned to
+  /// the issue on GitLab. This value came on seconds.
   /// Example: 18000, are the same as 5h
   @MappableField(key: 'time_estimate')
   int estimatedTime;
@@ -153,7 +153,7 @@ class IssueDetails with IssueDetailsMappable {
   @MappableField(key: 'title')
   String issueName;
 
-  /// Last time this issue receive an update 
+  /// Last time this issue receive an update
   @MappableField(key: 'updated_at')
   String lastTimeUpdated;
 
@@ -161,14 +161,14 @@ class IssueDetails with IssueDetailsMappable {
   @MappableField(key: 'updated_by_id')
   int? updatedUserId;
 
-  // TODO(Nacho): Ver como se utiliza este valor (Es del plan premium)
+  // TODO(Nacho): Discover how this value works (Premium feature)
 
   ///
   dynamic weight;
 
-  // TODO(Nacho): Ver como se utiliza este valor, no me aparece.
+  // TODO(Nacho): Discover where is this feature on gitlab
 
-  /// Indicates the health state of an issue, for more info about issue state:  
+  /// Indicates the health state of an issue, for more info about issue state:
   /// https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#health-status
   String? healthStatus;
 
@@ -180,17 +180,17 @@ class IssueDetails with IssueDetailsMappable {
   /// example: 18000 = 5h
   int totalTimeSpent;
 
-  // TODO(Nacho): Ver como se utiliza este valor
+  // TODO(Nacho): Discover how this value works
 
   ///
   int timeChange;
 
-  /// This value will storage the total time spent, but simplified, can came as 
+  /// This value will storage the total time spent, but simplified, can came as
   /// days, hours, etc. Example: "5h"
   @MappableField(key: 'human_total_time_spent')
   String? totalTimeSpentSimple;
 
-  // TODO(Nacho): Ver como se utiliza este valor
+  // TODO(Nacho): Discover how this value works
 
   ///
   dynamic humanTimeChange;
@@ -218,7 +218,7 @@ class IssueDetails with IssueDetailsMappable {
   /// https://about.gitlab.com/handbook/engineering/quality/issue-triage/
   String severity;
 
-  // TODO(Nacho): Ver como se utiliza este valor
+  // TODO(Nacho): Discover how this value works
 
   ///
   List<dynamic> customerRelationsContacts;

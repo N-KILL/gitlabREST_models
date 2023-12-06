@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'package:gitlab_rest_models/src/models/API/issues/request/issues_req_body.dart';
+import 'package:gitlab_rest_models/src/models/API/issues/response/issues_res_body.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
 
 /// This function [createGitLabIssue] send a `POST` request into a `gitlab
 /// project` to create an `issue`, based on his `API URL`, the `Project ID` and
-/// the `access token` given. And will return the `IID` (Internal ID) of the 
+/// the `access token` given. And will return the `IID` (Internal ID) of the
 /// issue, which can be used to read the issue data<br>
 /// If you want to automate this, its better create a `Project Token` with the
 /// correct permissions. <br> <br>
@@ -15,7 +16,7 @@ import 'package:logger/logger.dart';
 /// https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html <br>
 /// Info about how to create a project token: <br>
 /// https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html <br>
-Future<int?> createGitLabIssue({
+Future<IssueAPIResponseModel?> createGitLabIssue({
   required String gitlabApiUrl,
   required String projectId,
   required String accessToken,
@@ -71,7 +72,7 @@ Future<int?> createGitLabIssue({
     logger.i('Issue created correctly, issue iid: $responseIdd'
         '\n'
         '  ${response.body}');
-    return responseIdd;
+    return IssueAPIResponseModel.fromJson(response.body);
   } else {
     logger
         .e('Error: ${response.statusCode}' '\n' 'Error msg: ${response.body}');
@@ -80,7 +81,7 @@ Future<int?> createGitLabIssue({
 }
 
 // TODO(Nacho): Remove this test!!
-// void main() {
+// void main() async {
 //   const gitlabApiUrl = 'https://gitlab.com/api/v4';
 //   const projectId = '51929660';
 //   const accessToken = 'glpat-yqXm2jRtyFZsfTsszRS-';
@@ -96,10 +97,12 @@ Future<int?> createGitLabIssue({
 //     issueLabels: ['test', 'test2'],
 //     issueType: 'issue',
 //   );
-//   createGitLabIssue(
-//     gitlabApiUrl: gitlabApiUrl,
-//     projectId: projectId,
-//     accessToken: accessToken,
-//     body: bodyDos,
+//   print(
+//     await createGitLabIssue(
+//       gitlabApiUrl: gitlabApiUrl,
+//       projectId: projectId,
+//       accessToken: accessToken,
+//       body: bodyDos,
+//     ),
 //   );
 // }

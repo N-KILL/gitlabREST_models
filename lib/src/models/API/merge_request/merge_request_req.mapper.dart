@@ -28,9 +28,6 @@ class MergeReqRequestAPIModelMapper
   static String _$targetBranch(MergeReqRequestAPIModel v) => v.targetBranch;
   static const Field<MergeReqRequestAPIModel, String> _f$targetBranch =
       Field('targetBranch', _$targetBranch, key: 'target_branch');
-  static String? _$id(MergeReqRequestAPIModel v) => v.id;
-  static const Field<MergeReqRequestAPIModel, String> _f$id =
-      Field('id', _$id, opt: true);
   static String? _$title(MergeReqRequestAPIModel v) => v.title;
   static const Field<MergeReqRequestAPIModel, String> _f$title =
       Field('title', _$title, opt: true);
@@ -69,8 +66,8 @@ class MergeReqRequestAPIModelMapper
   static const Field<MergeReqRequestAPIModel, bool> _f$removeSourceBranch =
       Field('removeSourceBranch', _$removeSourceBranch,
           key: 'remove_source_branch', opt: true);
-  static String? _$reviewerIds(MergeReqRequestAPIModel v) => v.reviewerIds;
-  static const Field<MergeReqRequestAPIModel, String> _f$reviewerIds =
+  static List<int>? _$reviewerIds(MergeReqRequestAPIModel v) => v.reviewerIds;
+  static const Field<MergeReqRequestAPIModel, List<int>> _f$reviewerIds =
       Field('reviewerIds', _$reviewerIds, key: 'reviewer_ids', opt: true);
   static bool? _$squash(MergeReqRequestAPIModel v) => v.squash;
   static const Field<MergeReqRequestAPIModel, bool> _f$squash =
@@ -84,7 +81,6 @@ class MergeReqRequestAPIModelMapper
   final Map<Symbol, Field<MergeReqRequestAPIModel, dynamic>> fields = const {
     #sourceBranch: _f$sourceBranch,
     #targetBranch: _f$targetBranch,
-    #id: _f$id,
     #title: _f$title,
     #allowCollaboration: _f$allowCollaboration,
     #approvalsBeforeMerge: _f$approvalsBeforeMerge,
@@ -104,7 +100,6 @@ class MergeReqRequestAPIModelMapper
     return MergeReqRequestAPIModel(
         sourceBranch: data.dec(_f$sourceBranch),
         targetBranch: data.dec(_f$targetBranch),
-        id: data.dec(_f$id),
         title: data.dec(_f$title),
         allowCollaboration: data.dec(_f$allowCollaboration),
         approvalsBeforeMerge: data.dec(_f$approvalsBeforeMerge),
@@ -181,10 +176,10 @@ abstract class MergeReqRequestAPIModelCopyWith<
     $Out> implements ClassCopyWith<$R, $In, $Out> {
   ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get assigneeIds;
   ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>>? get labels;
+  ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get reviewerIds;
   $R call(
       {String? sourceBranch,
       String? targetBranch,
-      String? id,
       String? title,
       bool? allowCollaboration,
       int? approvalsBeforeMerge,
@@ -195,7 +190,7 @@ abstract class MergeReqRequestAPIModelCopyWith<
       List<String>? labels,
       int? milestoneId,
       bool? removeSourceBranch,
-      String? reviewerIds,
+      List<int>? reviewerIds,
       bool? squash,
       int? targetProjectId});
   MergeReqRequestAPIModelCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
@@ -226,10 +221,17 @@ class _MergeReqRequestAPIModelCopyWithImpl<$R, $Out>
               (v, t) => ObjectCopyWith(v, $identity, t), (v) => call(labels: v))
           : null;
   @override
+  ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get reviewerIds =>
+      $value.reviewerIds != null
+          ? ListCopyWith(
+              $value.reviewerIds!,
+              (v, t) => ObjectCopyWith(v, $identity, t),
+              (v) => call(reviewerIds: v))
+          : null;
+  @override
   $R call(
           {String? sourceBranch,
           String? targetBranch,
-          Object? id = $none,
           Object? title = $none,
           Object? allowCollaboration = $none,
           Object? approvalsBeforeMerge = $none,
@@ -246,7 +248,6 @@ class _MergeReqRequestAPIModelCopyWithImpl<$R, $Out>
       $apply(FieldCopyWithData({
         if (sourceBranch != null) #sourceBranch: sourceBranch,
         if (targetBranch != null) #targetBranch: targetBranch,
-        if (id != $none) #id: id,
         if (title != $none) #title: title,
         if (allowCollaboration != $none)
           #allowCollaboration: allowCollaboration,
@@ -269,7 +270,6 @@ class _MergeReqRequestAPIModelCopyWithImpl<$R, $Out>
   MergeReqRequestAPIModel $make(CopyWithData data) => MergeReqRequestAPIModel(
       sourceBranch: data.get(#sourceBranch, or: $value.sourceBranch),
       targetBranch: data.get(#targetBranch, or: $value.targetBranch),
-      id: data.get(#id, or: $value.id),
       title: data.get(#title, or: $value.title),
       allowCollaboration:
           data.get(#allowCollaboration, or: $value.allowCollaboration),

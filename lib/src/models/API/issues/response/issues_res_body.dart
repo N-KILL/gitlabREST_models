@@ -62,7 +62,7 @@ class IssueAPIResponseModel with IssueAPIResponseModelMappable {
   String title;
 
   ///
-  dynamic description;
+  String? description;
 
   ///
   String state;
@@ -74,25 +74,25 @@ class IssueAPIResponseModel with IssueAPIResponseModelMappable {
   DateTime updatedAt;
 
   ///
-  dynamic closedAt;
+  DateTime? closedAt;
 
   ///
-  dynamic closedBy;
+  int? closedBy;
 
   ///
-  List<dynamic> labels;
+  List<String> labels;
 
   ///
-  dynamic milestone;
+  int? milestone;
 
   ///
-  List<dynamic> assignees;
+  List<int?> assignees;
 
   ///
   String type;
 
   ///
-  dynamic assignee;
+  int? assignee;
 
   ///
   int userNotesCount;
@@ -107,13 +107,13 @@ class IssueAPIResponseModel with IssueAPIResponseModelMappable {
   int downvotes;
 
   ///
-  dynamic dueDate;
+  DateTime? dueDate;
 
   ///
   bool confidential;
 
   ///
-  dynamic discussionLocked;
+  bool? discussionLocked;
 
   ///
   String issueType;
@@ -149,10 +149,10 @@ class IssueAPIResponseModel with IssueAPIResponseModelMappable {
   bool subscribed;
 
   ///
-  dynamic movedToId;
+  int? movedToId;
 
   ///
-  dynamic serviceDeskReplyTo;
+  String? serviceDeskReplyTo;
 
   /// FromJson method, convert a json type object into this
   /// [IssueAPIResponseModel] Object

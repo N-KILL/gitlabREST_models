@@ -13,7 +13,6 @@ class MergeReqRequestAPIModel with MergeReqRequestAPIModelMappable {
   MergeReqRequestAPIModel({
     required this.sourceBranch,
     required this.targetBranch,
-    this.id,
     this.title,
     this.allowCollaboration,
     this.approvalsBeforeMerge,
@@ -28,9 +27,6 @@ class MergeReqRequestAPIModel with MergeReqRequestAPIModelMappable {
     this.squash,
     this.targetProjectId,
   });
-
-  /// The ID or URL-encoded path of the project owned by the authenticated user.
-  String? id;
 
   /// The source branch of the merge request.
   String sourceBranch;
@@ -74,7 +70,7 @@ class MergeReqRequestAPIModel with MergeReqRequestAPIModelMappable {
 
   /// The ID of the users added as a reviewer to the merge request. If set to 0
   /// or left empty, no reviewers are added. Introduced in GitLab 13.8.
-  String? reviewerIds;
+  List<int>? reviewerIds;
 
   /// Indicates if the merge request is set to be squashed when merged. Project
   /// settings may override this value.

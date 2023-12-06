@@ -10,8 +10,12 @@ import 'package:logger/logger.dart';
 final logger = Logger();
 
 /// This function [createGitLabBranchAndMRFromIssue] send a request into a
-/// `gitlab project` API from the function [createGitLabBranch] and then create
-/// a `merge request` for the `issue` from the function
+/// `gitlab project` API from the function [createGitLabBranch] (Use the
+/// `createBranchFromRefBranch` value to decide from which branch you want
+/// to create the new one, and the `issue` is used only for grab the name)
+/// and then create a `merge request` for the `issue` from the function.
+/// (Use the `mergeReqTargetBranch` to select to which branch you want
+/// to create te `Merge Request`)
 /// [createGitLabMergeRequest] <br>
 /// Info about how this works: <br>
 /// https://docs.gitlab.com/ee/api/branches.html#create-repository-branch<br>
@@ -32,6 +36,18 @@ Future<bool> createGitLabBranchAndMRFromIssue({
   required String createBranchFromRefBranch,
   // This is for the creation of the merge request
   required String mergeReqTargetBranch,
+  bool allowCollaboration = false,
+  bool allowMaintainerToPush = false,
+  int? assigneeId,
+  int? approvalsBeforeMerge,
+  List<int>? assigneeIds,
+  String? description,
+  int? milestoneId,
+  bool removeSourceBranch = false,
+  List<int>? reviewerIds,
+  bool squash = false,
+  int? targetProjectId,
+  String? title,
 }) async {
   // Create an `slug` from the name of the issue with the `slugParse` function
   final slugParseName = slugParse(issue.title);
@@ -55,6 +71,19 @@ Future<bool> createGitLabBranchAndMRFromIssue({
   final mrData = MergeReqRequestAPIModel(
     sourceBranch: branchName,
     targetBranch: mergeReqTargetBranch,
+    labels: issue.labels,
+    allowCollaboration: allowCollaboration,
+    allowMaintainerToPush: allowMaintainerToPush,
+    approvalsBeforeMerge: approvalsBeforeMerge,
+    assigneeId: assigneeId,
+    assigneeIds: assigneeIds,
+    description: description,
+    milestoneId: milestoneId,
+    removeSourceBranch: removeSourceBranch,
+    reviewerIds: reviewerIds,
+    squash: squash,
+    targetProjectId: targetProjectId,
+    title: title,
   );
 
   // if 'isBranchCreated' is true, we try to create the Merge Request, with the
@@ -73,24 +102,24 @@ Future<bool> createGitLabBranchAndMRFromIssue({
 }
 
 // TODO(Nacho): Remove this test!!
-void main() async {
-  const gitlabApiUrl = 'https://gitlab.com/api/v4';
-  const projectId = '51929660';
-  const accessToken = 'glpat-yqXm2jRtyFZsfTsszRS-';
+// void main() async {
+//   const gitlabApiUrl = 'https://gitlab.com/api/v4';
+//   const projectId = '51929660';
+//   const accessToken = 'glpat-yqXm2jRtyFZsfTsszRS-';
 
-  final issueData = await readGitLabIssue(
-    gitlabApiUrl: gitlabApiUrl,
-    projectId: projectId,
-    accessToken: accessToken,
-    issueIId: 1338,
-  );
+//   final issueData = await readGitLabIssue(
+//     gitlabApiUrl: gitlabApiUrl,
+//     projectId: projectId,
+//     accessToken: accessToken,
+//     issueIId: 1338,
+//   );
 
-  await createGitLabBranchAndMRFromIssue(
-    gitlabApiUrl: gitlabApiUrl,
-    projectId: projectId,
-    accessToken: accessToken,
-    issue: issueData!,
-    createBranchFromRefBranch: 'main',
-    mergeReqTargetBranch: 'main',
-  );
-}
+//   await createGitLabBranchAndMRFromIssue(
+//     gitlabApiUrl: gitlabApiUrl,
+//     projectId: projectId,
+//     accessToken: accessToken,
+//     issue: issueData!,
+//     createBranchFromRefBranch: 'main',
+//     mergeReqTargetBranch: 'main',
+//   );
+// }

@@ -49,8 +49,8 @@ class IssueAPIResponseModelMapper
   static dynamic _$closedBy(IssueAPIResponseModel v) => v.closedBy;
   static const Field<IssueAPIResponseModel, dynamic> _f$closedBy =
       Field('closedBy', _$closedBy, key: 'closed_by');
-  static List<dynamic> _$labels(IssueAPIResponseModel v) => v.labels;
-  static const Field<IssueAPIResponseModel, List<dynamic>> _f$labels =
+  static List<String> _$labels(IssueAPIResponseModel v) => v.labels;
+  static const Field<IssueAPIResponseModel, List<String>> _f$labels =
       Field('labels', _$labels);
   static dynamic _$milestone(IssueAPIResponseModel v) => v.milestone;
   static const Field<IssueAPIResponseModel, dynamic> _f$milestone =
@@ -249,7 +249,7 @@ abstract class IssueAPIResponseModelCopyWith<
     $R,
     $In extends IssueAPIResponseModel,
     $Out> implements ClassCopyWith<$R, $In, $Out> {
-  ListCopyWith<$R, dynamic, ObjectCopyWith<$R, dynamic, dynamic>> get labels;
+  ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>> get labels;
   ListCopyWith<$R, dynamic, ObjectCopyWith<$R, dynamic, dynamic>> get assignees;
   $R call(
       {int? id,
@@ -262,7 +262,7 @@ abstract class IssueAPIResponseModelCopyWith<
       DateTime? updatedAt,
       dynamic closedAt,
       dynamic closedBy,
-      List<dynamic>? labels,
+      List<String>? labels,
       dynamic milestone,
       List<dynamic>? assignees,
       String? type,
@@ -296,7 +296,7 @@ class _IssueAPIResponseModelCopyWithImpl<$R, $Out>
   late final ClassMapperBase<IssueAPIResponseModel> $mapper =
       IssueAPIResponseModelMapper.ensureInitialized();
   @override
-  ListCopyWith<$R, dynamic, ObjectCopyWith<$R, dynamic, dynamic>> get labels =>
+  ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>> get labels =>
       ListCopyWith($value.labels, (v, t) => ObjectCopyWith(v, $identity, t),
           (v) => call(labels: v));
   @override
@@ -315,7 +315,7 @@ class _IssueAPIResponseModelCopyWithImpl<$R, $Out>
           DateTime? updatedAt,
           Object? closedAt = $none,
           Object? closedBy = $none,
-          List<dynamic>? labels,
+          List<String>? labels,
           Object? milestone = $none,
           List<dynamic>? assignees,
           String? type,

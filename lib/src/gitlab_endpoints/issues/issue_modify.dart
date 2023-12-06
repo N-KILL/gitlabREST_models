@@ -1,11 +1,14 @@
 import 'dart:convert';
+import 'package:gitlab_rest_models/src/helpers/generate_issue_body.dart';
 import 'package:gitlab_rest_models/src/models/API/issues/request/issues_req_body.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
 
 /// This function [modifyGitLabIssue] send a `PUT` request into a `gitlab
 /// project` to modify an `issue`, based on his `API URL`, the `Project ID` and
-/// the `access token` given. <br>
+/// the `access token` given. If you hav premium on `gitlab` remind to set the
+/// bool premium on `True`, if you not, the vars `epicId`, and `epicInternalId`
+/// will be ignored<br>
 /// If you want to automate this, its better create a `Project Token` with the
 /// correct permissions. <br> <br>
 /// Info about how this works: <br>
@@ -18,39 +21,19 @@ Future<bool> modifyGitLabIssue({
   required String gitlabApiUrl,
   required String projectId,
   required String accessToken,
-  required int issueId,
+  required int issueIId,
   required IssueAPIRequestModel body,
+  bool premium = false,
 }) async {
   /// Logger service from (https://pub.dev/packages/logger)
   final logger = Logger();
 
   // This is the project url where we are going to send the request.
   final projectURL =
-      Uri.parse('$gitlabApiUrl/projects/$projectId/issues/$issueId');
-
-  // TODO(Nacho): Handle premium features
+      Uri.parse('$gitlabApiUrl/projects/$projectId/issues/$issueIId');
 
   // This is the body of the request
-  final sendBody = {
-    'add_labels': body.issueLabelsToAdd,
-    'assignee_ids': body.assignedToId,
-    'confidential': body.isConfidential,
-    'description': body.description,
-    'discussion_locked': body.discussionStatus,
-    'due_date': body.dueDate,
-    // 'epic_id':body.epicId, //! Premium
-    // 'epic_iid':body.epicInternalId, //! Premium
-    'id': body.issueId,
-    'issue_iid': body.issueInternalId,
-    'issue_type': body.issueType,
-    'labels': body.issueLabels,
-    'milestone_id': body.milestoneId,
-    'remove_labels': body.issueLabelsToRemove,
-    'state_event': body.stateEvent,
-    'title': body.issueTitle,
-    'updated_at': DateTime.now().toString(),
-    'weight ': body.weight,
-  };
+  final sendBody = generateBody(body: body, premium: premium);
 
   // We send the 'PUT' request to modify an existing issue in the project.
   final response = await http.put(
@@ -97,7 +80,7 @@ Future<bool> modifyGitLabIssue({
 //     gitlabApiUrl: gitlabApiUrl,
 //     projectId: projectId,
 //     accessToken: accessToken,
-//     issueId: 5,
+//     issueIId: 1348,
 //     body: bodyDos,
 //   );
 // }

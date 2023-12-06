@@ -3,9 +3,6 @@ import 'package:gitlab_rest_models/src/models/API/issues/request/issues_req_body
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
 
-/// Logger service from (https://pub.dev/packages/logger)
-final logger = Logger();
-
 /// This function [modifyGitLabIssue] send a `PUT` request into a `gitlab
 /// project` to modify an `issue`, based on his `API URL`, the `Project ID` and
 /// the `access token` given. <br>
@@ -24,6 +21,9 @@ Future<bool> modifyGitLabIssue({
   required int issueId,
   required IssueAPIRequestModel body,
 }) async {
+  /// Logger service from (https://pub.dev/packages/logger)
+  final logger = Logger();
+
   // This is the project url where we are going to send the request.
   final projectURL =
       Uri.parse('$gitlabApiUrl/projects/$projectId/issues/$issueId');
@@ -76,28 +76,28 @@ Future<bool> modifyGitLabIssue({
 }
 
 // TODO(Nacho): Remove this test!!
-void main() {
-  const gitlabApiUrl = 'https://gitlab.com/api/v4';
-  const projectId = '51929660';
-  const accessToken = 'glpat-yqXm2jRtyFZsfTsszRS-';
+// void main() {
+//   const gitlabApiUrl = 'https://gitlab.com/api/v4';
+//   const projectId = '51929660';
+//   const accessToken = 'glpat-yqXm2jRtyFZsfTsszRS-';
 
-  const myId = 14547350;
+//   const myId = 14547350;
 
-  final bodyDos = IssueAPIRequestModel(
-    issueTitle: 'testData',
-    assignedToId: myId,
-    description: 'Issue Description',
-    dueDate: '24-01-01',
-    isConfidential: false,
-    issueInternalId: '1337',
-    issueLabels: ['test', 'test2'],
-    issueType: 'issue',
-  );
-  modifyGitLabIssue(
-    gitlabApiUrl: gitlabApiUrl,
-    projectId: projectId,
-    accessToken: accessToken,
-    issueId: 5,
-    body: bodyDos,
-  );
-}
+//   final bodyDos = IssueAPIRequestModel(
+//     issueTitle: 'testData',
+//     assignedToId: myId,
+//     description: 'Issue Description',
+//     dueDate: '24-01-01',
+//     isConfidential: false,
+//     issueInternalId: '1337',
+//     issueLabels: ['test', 'test2'],
+//     issueType: 'issue',
+//   );
+//   modifyGitLabIssue(
+//     gitlabApiUrl: gitlabApiUrl,
+//     projectId: projectId,
+//     accessToken: accessToken,
+//     issueId: 5,
+//     body: bodyDos,
+//   );
+// }

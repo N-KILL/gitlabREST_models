@@ -2,9 +2,6 @@ import 'package:gitlab_rest_models/src/models/API/issues/response/issues_res_bod
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
 
-/// Logger service from (https://pub.dev/packages/logger)
-final logger = Logger();
-
 /// This function [readGitLabIssue] send a `GET` request into a `gitlab
 /// project` to delete an `issue`, based on his `API URL`, the `Project ID` and
 /// the `access token` given. Once we receive the issue data, we map into
@@ -23,6 +20,9 @@ Future<IssueAPIResponseModel?> readGitLabIssue({
   required String accessToken,
   required int issueIId,
 }) async {
+  /// Logger service from (https://pub.dev/packages/logger)
+  final logger = Logger();
+
   // This is the project url where we are going to send the request.
   final projectURL =
       Uri.parse('$gitlabApiUrl/projects/$projectId/issues/$issueIId');
@@ -52,15 +52,15 @@ Future<IssueAPIResponseModel?> readGitLabIssue({
 }
 
 // TODO(Nacho): Remove this test!!
-void main() async {
-  const gitlabApiUrl = 'https://gitlab.com/api/v4';
-  const projectId = '51929660';
-  const accessToken = 'glpat-yqXm2jRtyFZsfTsszRS-';
+// void main() async {
+//   const gitlabApiUrl = 'https://gitlab.com/api/v4';
+//   const projectId = '51929660';
+//   const accessToken = 'glpat-yqXm2jRtyFZsfTsszRS-';
 
-  await readGitLabIssue(
-    gitlabApiUrl: gitlabApiUrl,
-    projectId: projectId,
-    accessToken: accessToken,
-    issueIId: 8,
-  );
-}
+//   await readGitLabIssue(
+//     gitlabApiUrl: gitlabApiUrl,
+//     projectId: projectId,
+//     accessToken: accessToken,
+//     issueIId: 8,
+//   );
+// }

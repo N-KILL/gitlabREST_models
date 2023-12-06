@@ -4,9 +4,6 @@ import 'package:gitlab_rest_models/src/models/API/merge_request/merge_request_re
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
 
-/// Logger service from (https://pub.dev/packages/logger)
-final logger = Logger();
-
 /// This function [createGitLabMergeRequest] send a `POST` request into a
 /// `gitlab project` based on his `API URL`, the `Project ID` and the `access
 /// token` of the user who want to Create the `Merge Request`. <br>
@@ -24,6 +21,9 @@ Future<bool> createGitLabMergeRequest({
   required String accessToken,
   required MergeReqRequestAPIModel mrData,
 }) async {
+  /// Logger service from (https://pub.dev/packages/logger)
+  final logger = Logger();
+
   // This is the project url where we are going to send the request.
   final projectURL =
       Uri.parse('$gitlabApiUrl/projects/$projectId/merge_requests/');
@@ -81,21 +81,21 @@ Future<bool> createGitLabMergeRequest({
 }
 
 // TODO(Nacho): Remove this test!!
-void main() {
-  const gitlabApiUrl = 'https://gitlab.com/api/v4';
-  const projectId = '51929660';
-  const accessToken = 'glpat-yqXm2jRtyFZsfTsszRS-';
+// void main() {
+//   const gitlabApiUrl = 'https://gitlab.com/api/v4';
+//   const projectId = '51929660';
+//   const accessToken = 'glpat-yqXm2jRtyFZsfTsszRS-';
 
-  final mrData = MergeReqRequestAPIModel(
-    id: '1',
-    sourceBranch: '8-issue-from-dart',
-    targetBranch: 'main',
-  );
+//   final mrData = MergeReqRequestAPIModel(
+//     id: '1',
+//     sourceBranch: '8-issue-from-dart',
+//     targetBranch: 'main',
+//   );
 
-  createGitLabMergeRequest(
-    gitlabApiUrl: gitlabApiUrl,
-    projectId: projectId,
-    accessToken: accessToken,
-    mrData: mrData,
-  );
-}
+//   createGitLabMergeRequest(
+//     gitlabApiUrl: gitlabApiUrl,
+//     projectId: projectId,
+//     accessToken: accessToken,
+//     mrData: mrData,
+//   );
+// }

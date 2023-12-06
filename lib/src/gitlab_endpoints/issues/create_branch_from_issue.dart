@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'package:gitlab_rest_models/src/gitlab_endpoints/branches/branch_create.dart';
 import 'package:gitlab_rest_models/src/gitlab_endpoints/issues/issue_read.dart';
 import 'package:gitlab_rest_models/src/helpers/slug_parse.dart';
@@ -46,23 +44,23 @@ Future<bool> createGitLabBranchFromIssue({
 }
 
 // TODO(Nacho): Remove this test!!
-void main() async {
-  const gitlabApiUrl = 'https://gitlab.com/api/v4';
-  const projectId = '51929660';
-  const accessToken = 'glpat-yqXm2jRtyFZsfTsszRS-';
+// void main() async {
+//   const gitlabApiUrl = 'https://gitlab.com/api/v4';
+//   const projectId = '51929660';
+//   const accessToken = 'glpat-yqXm2jRtyFZsfTsszRS-';
 
-  final issueData = await readGitLabIssue(
-    gitlabApiUrl: gitlabApiUrl,
-    projectId: projectId,
-    accessToken: accessToken,
-    issueIId: 1337,
-  );
+//   final issueData = await readGitLabIssue(
+//     gitlabApiUrl: gitlabApiUrl,
+//     projectId: projectId,
+//     accessToken: accessToken,
+//     issueIId: 1337,
+//   );
 
-  await createGitLabBranchFromIssue(
-    gitlabApiUrl: gitlabApiUrl,
-    projectId: projectId,
-    accessToken: accessToken,
-    issue: issueData!,
-    fromRefBranch: 'main',
-  );
-}
+//   await createGitLabBranchFromIssue(
+//     gitlabApiUrl: gitlabApiUrl,
+//     projectId: projectId,
+//     accessToken: accessToken,
+//     issue: issueData!,
+//     fromRefBranch: 'main',
+//   );
+// }

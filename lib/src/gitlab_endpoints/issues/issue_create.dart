@@ -69,9 +69,7 @@ Future<IssueAPIResponseModel?> createGitLabIssue({
     // read the iid of the new issue in this var
     final responseIdd = responseMap['iid'] as int;
 
-    logger.i('Issue created correctly, issue iid: $responseIdd'
-        '\n'
-        '  ${response.body}');
+    logger.i('Issue created correctly, issue iid: $responseIdd');
     return IssueAPIResponseModel.fromJson(response.body);
   } else {
     logger

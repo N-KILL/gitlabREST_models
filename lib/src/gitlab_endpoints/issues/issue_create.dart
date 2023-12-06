@@ -5,7 +5,8 @@ import 'package:logger/logger.dart';
 
 /// This function [createGitLabIssue] send a `POST` request into a `gitlab
 /// project` to create an `issue`, based on his `API URL`, the `Project ID` and
-/// the `access token` given. <br>
+/// the `access token` given. And will return the `IID` (Internal ID) of the 
+/// issue, which can be used to read the issue data<br>
 /// If you want to automate this, its better create a `Project Token` with the
 /// correct permissions. <br> <br>
 /// Info about how this works: <br>
@@ -14,7 +15,7 @@ import 'package:logger/logger.dart';
 /// https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html <br>
 /// Info about how to create a project token: <br>
 /// https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html <br>
-Future<bool> createGitLabIssue({
+Future<int?> createGitLabIssue({
   required String gitlabApiUrl,
   required String projectId,
   required String accessToken,
@@ -57,16 +58,24 @@ Future<bool> createGitLabIssue({
     body: json.encode(sendBody),
   );
 
+  // Create a map from the response
+  final responseMap = jsonDecode(response.body) as Map<String, dynamic>;
+
   // If the issue is created will return a '201' status.
   // If the issue has an error while trying to create, it will be returned on
   // console.
   if (response.statusCode == 201) {
-    logger.i('Issue created correctly ' '\n' '  ${response.body}');
-    return true;
+    // read the iid of the new issue in this var
+    final responseIdd = responseMap['iid'] as int;
+
+    logger.i('Issue created correctly, issue iid: $responseIdd'
+        '\n'
+        '  ${response.body}');
+    return responseIdd;
   } else {
     logger
         .e('Error: ${response.statusCode}' '\n' 'Error msg: ${response.body}');
-    return false;
+    return null;
   }
 }
 

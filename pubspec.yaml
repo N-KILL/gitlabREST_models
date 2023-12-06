@@ -16,4 +16,5 @@ dev_dependencies:
 dependencies:
   dart_mappable: ^4.0.1
   http: ^0.13.6
+  logger: ^2.0.2+1
   

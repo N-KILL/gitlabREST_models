@@ -1,13 +1,14 @@
 import 'package:dart_mappable/dart_mappable.dart';
+import 'package:gitlab_rest_models/src/models/API/issues/issue_types.dart';
 
 part 'issues_req_body.mapper.dart';
 
-/// This [IssueAPIRequestModel] Class, is created to be used on the `API` as a 
+/// This [IssueAPIRequestModel] Class, is created to be used on the `API` as a
 /// Body of the request, with this model, you can interact with any `Issue` from
 ///  your `gitLab` project. <br>
 /// For more information about `GitLab API` related to `Issues`:
 /// https://docs.gitlab.com/ee/api/issues.html
-@MappableClass()
+@MappableClass(caseStyle: CaseStyle.snakeCase)
 class IssueAPIRequestModel with IssueAPIRequestModelMappable {
   /// Constructor
   IssueAPIRequestModel({
@@ -98,7 +99,7 @@ class IssueAPIRequestModel with IssueAPIRequestModelMappable {
 
   /// The type of issue. One of `issue`, `incident`, or `test_case`.
   /// Default is issue.
-  String? issueType;
+  IssueTypes? issueType;
 
   /// Comma-separated label names for an issue.
   List<String>? issueLabels;

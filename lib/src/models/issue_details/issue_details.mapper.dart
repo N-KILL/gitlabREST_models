@@ -21,12 +21,26 @@ class IssueDetailsMapper extends ClassMapperBase<IssueDetails> {
   @override
   final String id = 'IssueDetails';
 
+  static int _$id(IssueDetails v) => v.id;
+  static const Field<IssueDetails, int> _f$id = Field('id', _$id);
+  static int _$internalId(IssueDetails v) => v.internalId;
+  static const Field<IssueDetails, int> _f$internalId =
+      Field('internalId', _$internalId, key: 'iid');
+  static int _$relatedProjectId(IssueDetails v) => v.relatedProjectId;
+  static const Field<IssueDetails, int> _f$relatedProjectId =
+      Field('relatedProjectId', _$relatedProjectId, key: 'project_id');
   static int _$authorUserId(IssueDetails v) => v.authorUserId;
   static const Field<IssueDetails, int> _f$authorUserId =
       Field('authorUserId', _$authorUserId, key: 'author_id');
-  static String? _$closedAt(IssueDetails v) => v.closedAt;
-  static const Field<IssueDetails, String> _f$closedAt =
-      Field('closedAt', _$closedAt, key: 'closed_at');
+  static String? _$closedAtDate(IssueDetails v) => v.closedAtDate;
+  static const Field<IssueDetails, String> _f$closedAtDate =
+      Field('closedAtDate', _$closedAtDate, key: 'closed_at');
+  static String? _$updatedAtDate(IssueDetails v) => v.updatedAtDate;
+  static const Field<IssueDetails, String> _f$updatedAtDate =
+      Field('updatedAtDate', _$updatedAtDate, key: 'last_edited_at');
+  static int? _$updatedByUserId(IssueDetails v) => v.updatedByUserId;
+  static const Field<IssueDetails, int> _f$updatedByUserId =
+      Field('updatedByUserId', _$updatedByUserId, key: 'last_edited_by_id');
   static bool _$confidentialState(IssueDetails v) => v.confidentialState;
   static const Field<IssueDetails, bool> _f$confidentialState =
       Field('confidentialState', _$confidentialState, key: 'confidential');
@@ -44,17 +58,6 @@ class IssueDetailsMapper extends ClassMapperBase<IssueDetails> {
   static String? _$dueDate(IssueDetails v) => v.dueDate;
   static const Field<IssueDetails, String> _f$dueDate =
       Field('dueDate', _$dueDate, key: 'due_date');
-  static int _$id(IssueDetails v) => v.id;
-  static const Field<IssueDetails, int> _f$id = Field('id', _$id);
-  static int _$internalId(IssueDetails v) => v.internalId;
-  static const Field<IssueDetails, int> _f$internalId =
-      Field('internalId', _$internalId, key: 'iid');
-  static String? _$lastEditionDate(IssueDetails v) => v.lastEditionDate;
-  static const Field<IssueDetails, String> _f$lastEditionDate =
-      Field('lastEditionDate', _$lastEditionDate, key: 'last_edited_at');
-  static int? _$lastEditedUserId(IssueDetails v) => v.lastEditedUserId;
-  static const Field<IssueDetails, int> _f$lastEditedUserId =
-      Field('lastEditedUserId', _$lastEditedUserId, key: 'last_edited_by_id');
   static int? _$relatedMilestoneId(IssueDetails v) => v.relatedMilestoneId;
   static const Field<IssueDetails, int> _f$relatedMilestoneId =
       Field('relatedMilestoneId', _$relatedMilestoneId, key: 'milestone_id');
@@ -64,9 +67,6 @@ class IssueDetailsMapper extends ClassMapperBase<IssueDetails> {
   static int? _$issueSimilarTo(IssueDetails v) => v.issueSimilarTo;
   static const Field<IssueDetails, int> _f$issueSimilarTo =
       Field('issueSimilarTo', _$issueSimilarTo, key: 'duplicated_to_id');
-  static int _$relatedProjectId(IssueDetails v) => v.relatedProjectId;
-  static const Field<IssueDetails, int> _f$relatedProjectId =
-      Field('relatedProjectId', _$relatedProjectId, key: 'project_id');
   static int? _$issueBoardRelativePosition(IssueDetails v) =>
       v.issueBoardRelativePosition;
   static const Field<IssueDetails, int> _f$issueBoardRelativePosition = Field(
@@ -140,21 +140,21 @@ class IssueDetailsMapper extends ClassMapperBase<IssueDetails> {
 
   @override
   final Map<Symbol, Field<IssueDetails, dynamic>> fields = const {
+    #id: _f$id,
+    #internalId: _f$internalId,
+    #relatedProjectId: _f$relatedProjectId,
     #authorUserId: _f$authorUserId,
-    #closedAt: _f$closedAt,
+    #closedAtDate: _f$closedAtDate,
+    #updatedAtDate: _f$updatedAtDate,
+    #updatedByUserId: _f$updatedByUserId,
     #confidentialState: _f$confidentialState,
     #creationDate: _f$creationDate,
     #description: _f$description,
     #discussionLockedStatus: _f$discussionLockedStatus,
     #dueDate: _f$dueDate,
-    #id: _f$id,
-    #internalId: _f$internalId,
-    #lastEditionDate: _f$lastEditionDate,
-    #lastEditedUserId: _f$lastEditedUserId,
     #relatedMilestoneId: _f$relatedMilestoneId,
     #movedToId: _f$movedToId,
     #issueSimilarTo: _f$issueSimilarTo,
-    #relatedProjectId: _f$relatedProjectId,
     #issueBoardRelativePosition: _f$issueBoardRelativePosition,
     #issueStateId: _f$issueStateId,
     #estimatedTime: _f$estimatedTime,
@@ -180,21 +180,21 @@ class IssueDetailsMapper extends ClassMapperBase<IssueDetails> {
 
   static IssueDetails _instantiate(DecodingData data) {
     return IssueDetails(
+        id: data.dec(_f$id),
+        internalId: data.dec(_f$internalId),
+        relatedProjectId: data.dec(_f$relatedProjectId),
         authorUserId: data.dec(_f$authorUserId),
-        closedAt: data.dec(_f$closedAt),
+        closedAtDate: data.dec(_f$closedAtDate),
+        updatedAtDate: data.dec(_f$updatedAtDate),
+        updatedByUserId: data.dec(_f$updatedByUserId),
         confidentialState: data.dec(_f$confidentialState),
         creationDate: data.dec(_f$creationDate),
         description: data.dec(_f$description),
         discussionLockedStatus: data.dec(_f$discussionLockedStatus),
         dueDate: data.dec(_f$dueDate),
-        id: data.dec(_f$id),
-        internalId: data.dec(_f$internalId),
-        lastEditionDate: data.dec(_f$lastEditionDate),
-        lastEditedUserId: data.dec(_f$lastEditedUserId),
         relatedMilestoneId: data.dec(_f$relatedMilestoneId),
         movedToId: data.dec(_f$movedToId),
         issueSimilarTo: data.dec(_f$issueSimilarTo),
-        relatedProjectId: data.dec(_f$relatedProjectId),
         issueBoardRelativePosition: data.dec(_f$issueBoardRelativePosition),
         issueStateId: data.dec(_f$issueStateId),
         estimatedTime: data.dec(_f$estimatedTime),
@@ -277,21 +277,21 @@ abstract class IssueDetailsCopyWith<$R, $In extends IssueDetails, $Out>
   ListCopyWith<$R, dynamic, ObjectCopyWith<$R, dynamic, dynamic>>
       get customerRelationsContacts;
   $R call(
-      {int? authorUserId,
-      String? closedAt,
+      {int? id,
+      int? internalId,
+      int? relatedProjectId,
+      int? authorUserId,
+      String? closedAtDate,
+      String? updatedAtDate,
+      int? updatedByUserId,
       bool? confidentialState,
       String? creationDate,
       String? description,
       bool? discussionLockedStatus,
       String? dueDate,
-      int? id,
-      int? internalId,
-      String? lastEditionDate,
-      int? lastEditedUserId,
       int? relatedMilestoneId,
       int? movedToId,
       int? issueSimilarTo,
-      int? relatedProjectId,
       int? issueBoardRelativePosition,
       int? issueStateId,
       int? estimatedTime,
@@ -342,21 +342,21 @@ class _IssueDetailsCopyWithImpl<$R, $Out>
           (v) => call(customerRelationsContacts: v));
   @override
   $R call(
-          {int? authorUserId,
-          Object? closedAt = $none,
+          {int? id,
+          int? internalId,
+          int? relatedProjectId,
+          int? authorUserId,
+          Object? closedAtDate = $none,
+          Object? updatedAtDate = $none,
+          Object? updatedByUserId = $none,
           bool? confidentialState,
           String? creationDate,
           String? description,
           Object? discussionLockedStatus = $none,
           Object? dueDate = $none,
-          int? id,
-          int? internalId,
-          Object? lastEditionDate = $none,
-          Object? lastEditedUserId = $none,
           Object? relatedMilestoneId = $none,
           Object? movedToId = $none,
           Object? issueSimilarTo = $none,
-          int? relatedProjectId,
           Object? issueBoardRelativePosition = $none,
           int? issueStateId,
           int? estimatedTime,
@@ -379,23 +379,23 @@ class _IssueDetailsCopyWithImpl<$R, $Out>
           List<dynamic>? customerRelationsContacts,
           Object? actionType = $none}) =>
       $apply(FieldCopyWithData({
+        if (id != null) #id: id,
+        if (internalId != null) #internalId: internalId,
+        if (relatedProjectId != null) #relatedProjectId: relatedProjectId,
         if (authorUserId != null) #authorUserId: authorUserId,
-        if (closedAt != $none) #closedAt: closedAt,
+        if (closedAtDate != $none) #closedAtDate: closedAtDate,
+        if (updatedAtDate != $none) #updatedAtDate: updatedAtDate,
+        if (updatedByUserId != $none) #updatedByUserId: updatedByUserId,
         if (confidentialState != null) #confidentialState: confidentialState,
         if (creationDate != null) #creationDate: creationDate,
         if (description != null) #description: description,
         if (discussionLockedStatus != $none)
           #discussionLockedStatus: discussionLockedStatus,
         if (dueDate != $none) #dueDate: dueDate,
-        if (id != null) #id: id,
-        if (internalId != null) #internalId: internalId,
-        if (lastEditionDate != $none) #lastEditionDate: lastEditionDate,
-        if (lastEditedUserId != $none) #lastEditedUserId: lastEditedUserId,
         if (relatedMilestoneId != $none)
           #relatedMilestoneId: relatedMilestoneId,
         if (movedToId != $none) #movedToId: movedToId,
         if (issueSimilarTo != $none) #issueSimilarTo: issueSimilarTo,
-        if (relatedProjectId != null) #relatedProjectId: relatedProjectId,
         if (issueBoardRelativePosition != $none)
           #issueBoardRelativePosition: issueBoardRelativePosition,
         if (issueStateId != null) #issueStateId: issueStateId,
@@ -424,8 +424,14 @@ class _IssueDetailsCopyWithImpl<$R, $Out>
       }));
   @override
   IssueDetails $make(CopyWithData data) => IssueDetails(
+      id: data.get(#id, or: $value.id),
+      internalId: data.get(#internalId, or: $value.internalId),
+      relatedProjectId:
+          data.get(#relatedProjectId, or: $value.relatedProjectId),
       authorUserId: data.get(#authorUserId, or: $value.authorUserId),
-      closedAt: data.get(#closedAt, or: $value.closedAt),
+      closedAtDate: data.get(#closedAtDate, or: $value.closedAtDate),
+      updatedAtDate: data.get(#updatedAtDate, or: $value.updatedAtDate),
+      updatedByUserId: data.get(#updatedByUserId, or: $value.updatedByUserId),
       confidentialState:
           data.get(#confidentialState, or: $value.confidentialState),
       creationDate: data.get(#creationDate, or: $value.creationDate),
@@ -433,17 +439,10 @@ class _IssueDetailsCopyWithImpl<$R, $Out>
       discussionLockedStatus:
           data.get(#discussionLockedStatus, or: $value.discussionLockedStatus),
       dueDate: data.get(#dueDate, or: $value.dueDate),
-      id: data.get(#id, or: $value.id),
-      internalId: data.get(#internalId, or: $value.internalId),
-      lastEditionDate: data.get(#lastEditionDate, or: $value.lastEditionDate),
-      lastEditedUserId:
-          data.get(#lastEditedUserId, or: $value.lastEditedUserId),
       relatedMilestoneId:
           data.get(#relatedMilestoneId, or: $value.relatedMilestoneId),
       movedToId: data.get(#movedToId, or: $value.movedToId),
       issueSimilarTo: data.get(#issueSimilarTo, or: $value.issueSimilarTo),
-      relatedProjectId:
-          data.get(#relatedProjectId, or: $value.relatedProjectId),
       issueBoardRelativePosition: data.get(#issueBoardRelativePosition,
           or: $value.issueBoardRelativePosition),
       issueStateId: data.get(#issueStateId, or: $value.issueStateId),

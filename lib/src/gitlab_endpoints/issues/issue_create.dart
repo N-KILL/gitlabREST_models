@@ -42,7 +42,7 @@ Future<IssueAPIResponseModel?> createGitLabIssue({
     'epic_iid': body.epicInternalId,
     'id': body.issueId,
     'iid': body.issueInternalId,
-    'issue_type': body.issueType,
+    'issue_type': body.issueType?.name,
     'labels': body.issueLabels,
     'merge_request_to_resolve_discussions_of': body.mergeRequestInternalId,
     'milestone_id': body.milestoneId,
@@ -87,13 +87,13 @@ Future<IssueAPIResponseModel?> createGitLabIssue({
 //   const myId = 14547350;
 
 //   final bodyDos = IssueAPIRequestModel(
-//     issueTitle: 'New issue 2',
+//     issueTitle: 'Test issue types?',
 //     assignedToId: myId,
 //     description: 'Issue Description',
 //     dueDate: '24-01-01',
 //     isConfidential: false,
 //     issueLabels: ['test', 'test2'],
-//     issueType: 'issue',
+//     issueType: IssueTypes.issue,
 //   );
 //   print(
 //     await createGitLabIssue(

@@ -26,11 +26,11 @@ Future<bool> createGitLabBranchFromIssue({
   required String fromRefBranch,
 }) async {
   // Create an `slug` from the name of the issue with the `slugParse` function
-  final slugParseName = slugParse(issue.title);
+  final slugParseName = slugParse(issue.name);
 
   // Create the `Branch name` with the format `gitLab` usually do.
   // Example: 'IID' + '-' + 'Name of the Issue on slug format'
-  final branchName = '${issue.iid}-$slugParseName';
+  final branchName = '${issue.internalId}-$slugParseName';
 
   // We call the function 'createGitLabBranch' to create the branch, and return
   // his value

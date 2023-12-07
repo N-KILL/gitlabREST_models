@@ -11,7 +11,6 @@ Map<String, dynamic> generateBody({
   required bool premium,
 }) {
   if (premium) {
-    // This is the body of the request
     final sendBody = {
       'add_labels': body.issueLabelsToAdd,
       'assignee_ids': body.assignedToId,
@@ -34,7 +33,6 @@ Map<String, dynamic> generateBody({
     };
     return sendBody;
   } else {
-    // This is the body of the request
     final sendBody = {
       'add_labels': body.issueLabelsToAdd,
       'assignee_ids': body.assignedToId,

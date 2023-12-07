@@ -13,6 +13,7 @@ class IssueAPIRequestModelMapper extends ClassMapperBase<IssueAPIRequestModel> {
   static IssueAPIRequestModelMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = IssueAPIRequestModelMapper._());
+      IssueTypesMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -22,76 +23,86 @@ class IssueAPIRequestModelMapper extends ClassMapperBase<IssueAPIRequestModel> {
 
   static String? _$issueTitle(IssueAPIRequestModel v) => v.issueTitle;
   static const Field<IssueAPIRequestModel, String> _f$issueTitle =
-      Field('issueTitle', _$issueTitle, opt: true);
+      Field('issueTitle', _$issueTitle, key: 'issue_title', opt: true);
   static String? _$description(IssueAPIRequestModel v) => v.description;
   static const Field<IssueAPIRequestModel, String> _f$description =
       Field('description', _$description, opt: true);
   static int? _$assignedToId(IssueAPIRequestModel v) => v.assignedToId;
   static const Field<IssueAPIRequestModel, int> _f$assignedToId =
-      Field('assignedToId', _$assignedToId, opt: true);
+      Field('assignedToId', _$assignedToId, key: 'assigned_to_id', opt: true);
   static List<int>? _$assignedToIds(IssueAPIRequestModel v) => v.assignedToIds;
-  static const Field<IssueAPIRequestModel, List<int>> _f$assignedToIds =
-      Field('assignedToIds', _$assignedToIds, opt: true);
+  static const Field<IssueAPIRequestModel, List<int>> _f$assignedToIds = Field(
+      'assignedToIds', _$assignedToIds,
+      key: 'assigned_to_ids', opt: true);
   static bool? _$isConfidential(IssueAPIRequestModel v) => v.isConfidential;
-  static const Field<IssueAPIRequestModel, bool> _f$isConfidential =
-      Field('isConfidential', _$isConfidential, opt: true);
+  static const Field<IssueAPIRequestModel, bool> _f$isConfidential = Field(
+      'isConfidential', _$isConfidential,
+      key: 'is_confidential', opt: true);
   static String? _$discussionToResolve(IssueAPIRequestModel v) =>
       v.discussionToResolve;
   static const Field<IssueAPIRequestModel, String> _f$discussionToResolve =
-      Field('discussionToResolve', _$discussionToResolve, opt: true);
+      Field('discussionToResolve', _$discussionToResolve,
+          key: 'discussion_to_resolve', opt: true);
   static String? _$createdAt(IssueAPIRequestModel v) => v.createdAt;
   static const Field<IssueAPIRequestModel, String> _f$createdAt =
-      Field('createdAt', _$createdAt, opt: true);
+      Field('createdAt', _$createdAt, key: 'created_at', opt: true);
   static String? _$dueDate(IssueAPIRequestModel v) => v.dueDate;
   static const Field<IssueAPIRequestModel, String> _f$dueDate =
-      Field('dueDate', _$dueDate, opt: true);
+      Field('dueDate', _$dueDate, key: 'due_date', opt: true);
   static int? _$epicId(IssueAPIRequestModel v) => v.epicId;
   static const Field<IssueAPIRequestModel, int> _f$epicId =
-      Field('epicId', _$epicId, opt: true);
+      Field('epicId', _$epicId, key: 'epic_id', opt: true);
   static int? _$epicInternalId(IssueAPIRequestModel v) => v.epicInternalId;
-  static const Field<IssueAPIRequestModel, int> _f$epicInternalId =
-      Field('epicInternalId', _$epicInternalId, opt: true);
+  static const Field<IssueAPIRequestModel, int> _f$epicInternalId = Field(
+      'epicInternalId', _$epicInternalId,
+      key: 'epic_internal_id', opt: true);
   static String? _$issueId(IssueAPIRequestModel v) => v.issueId;
   static const Field<IssueAPIRequestModel, String> _f$issueId =
-      Field('issueId', _$issueId, opt: true);
+      Field('issueId', _$issueId, key: 'issue_id', opt: true);
   static String? _$issueInternalId(IssueAPIRequestModel v) => v.issueInternalId;
-  static const Field<IssueAPIRequestModel, String> _f$issueInternalId =
-      Field('issueInternalId', _$issueInternalId, opt: true);
-  static String? _$issueType(IssueAPIRequestModel v) => v.issueType;
-  static const Field<IssueAPIRequestModel, String> _f$issueType =
-      Field('issueType', _$issueType, opt: true);
+  static const Field<IssueAPIRequestModel, String> _f$issueInternalId = Field(
+      'issueInternalId', _$issueInternalId,
+      key: 'issue_internal_id', opt: true);
+  static IssueTypes? _$issueType(IssueAPIRequestModel v) => v.issueType;
+  static const Field<IssueAPIRequestModel, IssueTypes> _f$issueType =
+      Field('issueType', _$issueType, key: 'issue_type', opt: true);
   static List<String>? _$issueLabels(IssueAPIRequestModel v) => v.issueLabels;
   static const Field<IssueAPIRequestModel, List<String>> _f$issueLabels =
-      Field('issueLabels', _$issueLabels, opt: true);
+      Field('issueLabels', _$issueLabels, key: 'issue_labels', opt: true);
   static int? _$mergeRequestInternalId(IssueAPIRequestModel v) =>
       v.mergeRequestInternalId;
   static const Field<IssueAPIRequestModel, int> _f$mergeRequestInternalId =
-      Field('mergeRequestInternalId', _$mergeRequestInternalId, opt: true);
+      Field('mergeRequestInternalId', _$mergeRequestInternalId,
+          key: 'merge_request_internal_id', opt: true);
   static int? _$milestoneId(IssueAPIRequestModel v) => v.milestoneId;
   static const Field<IssueAPIRequestModel, int> _f$milestoneId =
-      Field('milestoneId', _$milestoneId, opt: true);
+      Field('milestoneId', _$milestoneId, key: 'milestone_id', opt: true);
   static List<String>? _$issueLabelsToAdd(IssueAPIRequestModel v) =>
       v.issueLabelsToAdd;
   static const Field<IssueAPIRequestModel, List<String>> _f$issueLabelsToAdd =
-      Field('issueLabelsToAdd', _$issueLabelsToAdd, opt: true);
+      Field('issueLabelsToAdd', _$issueLabelsToAdd,
+          key: 'issue_labels_to_add', opt: true);
   static List<String>? _$issueLabelsToRemove(IssueAPIRequestModel v) =>
       v.issueLabelsToRemove;
   static const Field<IssueAPIRequestModel, List<String>>
-      _f$issueLabelsToRemove =
-      Field('issueLabelsToRemove', _$issueLabelsToRemove, opt: true);
+      _f$issueLabelsToRemove = Field(
+          'issueLabelsToRemove', _$issueLabelsToRemove,
+          key: 'issue_labels_to_remove', opt: true);
   static int? _$weight(IssueAPIRequestModel v) => v.weight;
   static const Field<IssueAPIRequestModel, int> _f$weight =
       Field('weight', _$weight, opt: true);
   static String? _$discussionStatus(IssueAPIRequestModel v) =>
       v.discussionStatus;
-  static const Field<IssueAPIRequestModel, String> _f$discussionStatus =
-      Field('discussionStatus', _$discussionStatus, opt: true);
+  static const Field<IssueAPIRequestModel, String> _f$discussionStatus = Field(
+      'discussionStatus', _$discussionStatus,
+      key: 'discussion_status', opt: true);
   static String? _$stateEvent(IssueAPIRequestModel v) => v.stateEvent;
   static const Field<IssueAPIRequestModel, String> _f$stateEvent =
-      Field('stateEvent', _$stateEvent, opt: true);
+      Field('stateEvent', _$stateEvent, key: 'state_event', opt: true);
   static String? _$updatedAt(IssueAPIRequestModel v) => v.updatedAt;
-  static const Field<IssueAPIRequestModel, String> _f$updatedAt =
-      Field('updatedAt', _$updatedAt, mode: FieldMode.member);
+  static const Field<IssueAPIRequestModel, String> _f$updatedAt = Field(
+      'updatedAt', _$updatedAt,
+      key: 'updated_at', mode: FieldMode.member);
 
   @override
   final Map<Symbol, Field<IssueAPIRequestModel, dynamic>> fields = const {
@@ -222,7 +233,7 @@ abstract class IssueAPIRequestModelCopyWith<
       int? epicInternalId,
       String? issueId,
       String? issueInternalId,
-      String? issueType,
+      IssueTypes? issueType,
       List<String>? issueLabels,
       int? mergeRequestInternalId,
       int? milestoneId,

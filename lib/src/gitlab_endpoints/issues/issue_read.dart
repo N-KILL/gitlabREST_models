@@ -43,7 +43,9 @@ Future<IssueAPIResponseModel?> readGitLabIssue({
   // console.
   if (response.statusCode == 200) {
     logger.i('Issue found, creating IssueAPIResponseModel');
-    return IssueAPIResponseModel.fromJson(response.body);
+    final issueAPImodel = IssueAPIResponseModel.fromJson(response.body);
+    print(response.body);
+    return issueAPImodel;
   } else {
     logger
         .e('Error: ${response.statusCode}' '\n' 'Error msg: ${response.body}');
@@ -52,15 +54,15 @@ Future<IssueAPIResponseModel?> readGitLabIssue({
 }
 
 // TODO(Nacho): Remove this test!!
-// void main() async {
-//   const gitlabApiUrl = 'https://gitlab.com/api/v4';
-//   const projectId = '51929660';
-//   const accessToken = 'glpat-yqXm2jRtyFZsfTsszRS-';
+void main() async {
+  const gitlabApiUrl = 'https://gitlab.com/api/v4';
+  const projectId = '51929660';
+  const accessToken = 'glpat-yqXm2jRtyFZsfTsszRS-';
 
-//   await readGitLabIssue(
-//     gitlabApiUrl: gitlabApiUrl,
-//     projectId: projectId,
-//     accessToken: accessToken,
-//     issueIId: 8,
-//   );
-// }
+  await readGitLabIssue(
+    gitlabApiUrl: gitlabApiUrl,
+    projectId: projectId,
+    accessToken: accessToken,
+    issueIId: 1357,
+  );
+}

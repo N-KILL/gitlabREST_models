@@ -13,21 +13,21 @@ part 'issue_details.mapper.dart';
 class IssueDetails with IssueDetailsMappable {
   /// IssueDetails Class constructor
   IssueDetails({
+    required this.id,
+    required this.internalId,
+    required this.relatedProjectId,
     required this.authorUserId,
-    required this.closedAt,
+    required this.closedAtDate,
+    required this.updatedAtDate,
+    required this.updatedByUserId,
     required this.confidentialState,
     required this.creationDate,
     required this.description,
     required this.discussionLockedStatus,
     required this.dueDate,
-    required this.id,
-    required this.internalId,
-    required this.lastEditionDate,
-    required this.lastEditedUserId,
     required this.relatedMilestoneId,
     required this.movedToId,
     required this.issueSimilarTo,
-    required this.relatedProjectId,
     required this.issueBoardRelativePosition,
     required this.issueStateId,
     required this.estimatedTime,
@@ -56,7 +56,8 @@ class IssueDetails with IssueDetailsMappable {
   int authorUserId;
 
   /// Date when the issue was marked as closed
-  String? closedAt;
+  @MappableField(key: 'closed_at')
+  String? closedAtDate;
 
   /// Boolean value that indicates if is confidential or not, Confidential
   /// issues are issues visible only to members of a project with sufficient
@@ -101,12 +102,12 @@ class IssueDetails with IssueDetailsMappable {
   /// if the issue is new. It is a string because it came as an unsupported
   /// format: '2023-11-29 11:37:09 UTC', cant be parsed at date
   @MappableField(key: 'last_edited_at')
-  String? lastEditionDate;
+  String? updatedAtDate;
 
   /// This value will save the id of the user who perform the last edition
   /// to the issue. )
   @MappableField(key: 'last_edited_by_id')
-  int? lastEditedUserId;
+  int? updatedByUserId;
 
   /// This is the milestone id related to the issue, if is not milestone related
   /// it will came as a null value
@@ -115,8 +116,8 @@ class IssueDetails with IssueDetailsMappable {
 
   // TODO(Nacho): Verify this doc
 
-  /// This value indicates when the issue is moved into another project, it will
-  /// show the id of this other project
+  /// `movedToId` if used when the issue is moved to another project. This will
+  /// store this new id of the `duplicated issue`.
   int? movedToId;
 
   /// If an issue is marked as duplicated of another issue by a quick actions

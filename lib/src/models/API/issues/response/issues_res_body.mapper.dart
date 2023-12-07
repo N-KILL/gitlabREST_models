@@ -69,7 +69,7 @@ class IssueAPIResponseModelMapper
       v.userAssignees;
   static const Field<IssueAPIResponseModel, List<UserAPI>> _f$userAssignees =
       Field('userAssignees', _$userAssignees, key: 'assignees');
-  static UserAPI _$assignedUser(IssueAPIResponseModel v) => v.assignedUser;
+  static UserAPI? _$assignedUser(IssueAPIResponseModel v) => v.assignedUser;
   static const Field<IssueAPIResponseModel, UserAPI> _f$assignedUser =
       Field('assignedUser', _$assignedUser, key: 'assignee');
   static UserAPI _$authorUser(IssueAPIResponseModel v) => v.authorUser;
@@ -291,7 +291,7 @@ abstract class IssueAPIResponseModelCopyWith<
   MilestoneAPICopyWith<$R, MilestoneAPI, MilestoneAPI>? get relatedMilestone;
   ListCopyWith<$R, UserAPI, UserAPICopyWith<$R, UserAPI, UserAPI>>
       get userAssignees;
-  UserAPICopyWith<$R, UserAPI, UserAPI> get assignedUser;
+  UserAPICopyWith<$R, UserAPI, UserAPI>? get assignedUser;
   UserAPICopyWith<$R, UserAPI, UserAPI> get authorUser;
   TimeStatsCopyWith<$R, TimeStats, TimeStats> get timeStats;
   TaskCompletionStatusCopyWith<$R, TaskCompletionStatus, TaskCompletionStatus>
@@ -362,8 +362,8 @@ class _IssueAPIResponseModelCopyWithImpl<$R, $Out>
       get userAssignees => ListCopyWith($value.userAssignees,
           (v, t) => v.copyWith.$chain(t), (v) => call(userAssignees: v));
   @override
-  UserAPICopyWith<$R, UserAPI, UserAPI> get assignedUser =>
-      $value.assignedUser.copyWith.$chain((v) => call(assignedUser: v));
+  UserAPICopyWith<$R, UserAPI, UserAPI>? get assignedUser =>
+      $value.assignedUser?.copyWith.$chain((v) => call(assignedUser: v));
   @override
   UserAPICopyWith<$R, UserAPI, UserAPI> get authorUser =>
       $value.authorUser.copyWith.$chain((v) => call(authorUser: v));
@@ -395,7 +395,7 @@ class _IssueAPIResponseModelCopyWithImpl<$R, $Out>
           List<String>? labels,
           Object? relatedMilestone = $none,
           List<UserAPI>? userAssignees,
-          UserAPI? assignedUser,
+          Object? assignedUser = $none,
           UserAPI? authorUser,
           int? userNotesCount,
           int? mergeRequestsCount,
@@ -431,7 +431,7 @@ class _IssueAPIResponseModelCopyWithImpl<$R, $Out>
         if (labels != null) #labels: labels,
         if (relatedMilestone != $none) #relatedMilestone: relatedMilestone,
         if (userAssignees != null) #userAssignees: userAssignees,
-        if (assignedUser != null) #assignedUser: assignedUser,
+        if (assignedUser != $none) #assignedUser: assignedUser,
         if (authorUser != null) #authorUser: authorUser,
         if (userNotesCount != null) #userNotesCount: userNotesCount,
         if (mergeRequestsCount != null) #mergeRequestsCount: mergeRequestsCount,

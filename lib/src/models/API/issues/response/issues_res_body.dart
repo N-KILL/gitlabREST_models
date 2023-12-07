@@ -112,7 +112,7 @@ class IssueAPIResponseModel with IssueAPIResponseModelMappable {
 
   /// `assignedUser` Its the `user` assigned to the `issue` on `GitLab`.
   @MappableField(key: 'assignee')
-  UserAPI assignedUser;
+  UserAPI? assignedUser;
 
   /// `author` its the `user` who create the `issue` on `GitLab`.
   @MappableField(key: 'author')

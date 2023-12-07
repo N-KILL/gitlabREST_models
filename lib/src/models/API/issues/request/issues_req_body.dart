@@ -96,7 +96,8 @@ class IssueAPIRequestModel with IssueAPIRequestModelMappable {
   /// The internal ID of the project’s issue (requires `administrator` or
   /// `project owner` rights).
   String? issueInternalId;
-
+  
+  /// [IssueTypes] instance.
   /// The type of issue. One of `issue`, `incident`, or `test_case`.
   /// Default is issue.
   IssueTypes? issueType;

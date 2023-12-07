@@ -176,7 +176,7 @@ class IssueAPIResponseModel with IssueAPIResponseModelMappable {
   int blockingIssuesCount;
 
   /// `hasTasks` its a bool indicating if the issue have task on it, or not.
-  @MappableField(key: 'has_task')
+  @MappableField(key: 'has_tasks')
   bool hasTasksStatus;
 
   /// `taskStatus` its a string who says how many task has been completed. <br>

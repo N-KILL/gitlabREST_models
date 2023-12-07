@@ -123,7 +123,7 @@ class IssueAPIResponseModelMapper
       key: 'blocking_issues_count');
   static bool _$hasTasksStatus(IssueAPIResponseModel v) => v.hasTasksStatus;
   static const Field<IssueAPIResponseModel, bool> _f$hasTasksStatus =
-      Field('hasTasksStatus', _$hasTasksStatus, key: 'has_task');
+      Field('hasTasksStatus', _$hasTasksStatus, key: 'has_tasks');
   static String _$taskStatus(IssueAPIResponseModel v) => v.taskStatus;
   static const Field<IssueAPIResponseModel, String> _f$taskStatus =
       Field('taskStatus', _$taskStatus, key: 'task_status');

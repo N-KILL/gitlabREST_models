@@ -2,6 +2,7 @@
 library gitlab_rest_models;
 
 export 'src/gitlab_endpoints/branches/branch_create.dart';
+export 'src/gitlab_endpoints/branches/branch_delete.dart';
 export 'src/gitlab_endpoints/issues/create_branch_and_mr_from_issue.dart';
 export 'src/gitlab_endpoints/issues/create_branch_from_issue.dart';
 export 'src/gitlab_endpoints/issues/issue_create.dart';

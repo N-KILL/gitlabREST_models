@@ -54,15 +54,15 @@ Future<IssueAPIResponseModel?> readGitLabIssue({
 }
 
 // TODO(Nacho): Remove this test!!
-void main() async {
-  const gitlabApiUrl = 'https://gitlab.com/api/v4';
-  const projectId = '51929660';
-  const accessToken = 'glpat-yqXm2jRtyFZsfTsszRS-';
+// void main() async {
+//   const gitlabApiUrl = 'https://gitlab.com/api/v4';
+//   const projectId = '51929660';
+//   const accessToken = 'glpat-yqXm2jRtyFZsfTsszRS-';
 
-  await readGitLabIssue(
-    gitlabApiUrl: gitlabApiUrl,
-    projectId: projectId,
-    accessToken: accessToken,
-    issueIId: 1357,
-  );
-}
+//   await readGitLabIssue(
+//     gitlabApiUrl: gitlabApiUrl,
+//     projectId: projectId,
+//     accessToken: accessToken,
+//     issueIId: 1357,
+//   );
+// }

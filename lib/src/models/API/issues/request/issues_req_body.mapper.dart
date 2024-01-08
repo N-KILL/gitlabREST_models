@@ -64,8 +64,9 @@ class IssueAPIRequestModelMapper extends ClassMapperBase<IssueAPIRequestModel> {
       'issueInternalId', _$issueInternalId,
       key: 'issue_internal_id', opt: true);
   static IssueTypes? _$issueType(IssueAPIRequestModel v) => v.issueType;
-  static const Field<IssueAPIRequestModel, IssueTypes> _f$issueType =
-      Field('issueType', _$issueType, key: 'issue_type', opt: true);
+  static const Field<IssueAPIRequestModel, IssueTypes> _f$issueType = Field(
+      'issueType', _$issueType,
+      key: 'issue_type', opt: true, def: IssueTypes.issue);
   static List<String>? _$issueLabels(IssueAPIRequestModel v) => v.issueLabels;
   static const Field<IssueAPIRequestModel, List<String>> _f$issueLabels =
       Field('issueLabels', _$issueLabels, key: 'issue_labels', opt: true);

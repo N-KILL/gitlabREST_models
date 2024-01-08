@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:gitlab_rest_models/gitlab_rest_models.dart';
 import 'package:gitlab_rest_models/src/helpers/generate_issue_body.dart';
 import 'package:gitlab_rest_models/src/models/API/issues/request/issues_req_body.dart';
 import 'package:http/http.dart' as http;
@@ -58,24 +59,14 @@ Future<bool> modifyGitLabIssue({
   }
 }
 
-// TODO(Nacho): Remove this test!!
 // void main() {
 //   const gitlabApiUrl = 'https://gitlab.com/api/v4';
 //   const projectId = '51929660';
-//   const accessToken = 'glpat-yqXm2jRtyFZsfTsszRS-';
+//   const accessToken = 'glpat-s2axRR49k4dm5j6GTRJZ';
 
 //   const myId = 14547350;
 
-//   final bodyDos = IssueAPIRequestModel(
-//     issueTitle: 'testData',
-//     assignedToId: myId,
-//     description: 'Issue Description',
-//     dueDate: '24-01-01',
-//     isConfidential: false,
-//     issueInternalId: '1337',
-//     issueLabels: ['test', 'test2'],
-//     issueType: 'issue',
-//   );
+//   final bodyDos = IssueAPIRequestModel();
 //   modifyGitLabIssue(
 //     gitlabApiUrl: gitlabApiUrl,
 //     projectId: projectId,

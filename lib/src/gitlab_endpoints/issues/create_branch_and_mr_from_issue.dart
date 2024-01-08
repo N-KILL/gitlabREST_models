@@ -1,5 +1,4 @@
 import 'package:gitlab_rest_models/src/gitlab_endpoints/branches/branch_create.dart';
-import 'package:gitlab_rest_models/src/gitlab_endpoints/issues/issue_read.dart';
 import 'package:gitlab_rest_models/src/gitlab_endpoints/merge_requests/merge_request_create.dart';
 import 'package:gitlab_rest_models/src/helpers/slug_parse.dart';
 import 'package:gitlab_rest_models/src/models/API/issues/response/issues_res_body.dart';
@@ -105,7 +104,7 @@ Future<bool> createGitLabBranchAndMRFromIssue({
 // void main() async {
 //   const gitlabApiUrl = 'https://gitlab.com/api/v4';
 //   const projectId = '51929660';
-//   const accessToken = 'glpat-yqXm2jRtyFZsfTsszRS-';
+//   const accessToken = 'glpat-s2axRR49k4dm5j6GTRJZ';
 
 //   final issueData = await readGitLabIssue(
 //     gitlabApiUrl: gitlabApiUrl,

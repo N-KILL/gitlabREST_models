@@ -4,8 +4,9 @@ import 'package:gitlab_rest_models/src/models/API/issues/issue_types.dart';
 part 'issues_req_body.mapper.dart';
 
 /// This [IssueAPIRequestModel] Class, is created to be used on the `API` as a
-/// Body of the request, with this model, you can interact with any `Issue` from
-///  your `gitLab` project. <br>
+/// Body of the request, when you try to create or modify an `issue` of `GitLab`
+/// with this, all the data is nullable, but when you try to `create` an 
+/// `issue` you have to put at least the [issueTitle] on the object.
 /// For more information about `GitLab API` related to `Issues`:
 /// https://docs.gitlab.com/ee/api/issues.html
 @MappableClass(caseStyle: CaseStyle.snakeCase)
@@ -24,7 +25,7 @@ class IssueAPIRequestModel with IssueAPIRequestModelMappable {
     this.epicInternalId,
     this.issueId,
     this.issueInternalId,
-    this.issueType,
+    this.issueType = IssueTypes.issue,
     this.issueLabels,
     this.mergeRequestInternalId,
     this.milestoneId,

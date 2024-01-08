@@ -31,6 +31,7 @@ Map<String, dynamic> generateBody({
       'updated_at': DateTime.now().toString(),
       'weight ': body.weight,
     };
+    
     return sendBody;
   } else {
     final sendBody = {

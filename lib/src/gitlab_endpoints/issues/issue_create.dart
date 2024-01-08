@@ -8,6 +8,8 @@ import 'package:logger/logger.dart';
 /// project` to create an `issue`, based on his `API URL`, the `Project ID` and
 /// the `access token` given. And will return the `IID` (Internal ID) of the
 /// issue, which can be used to read the issue data<br>
+/// At least you need to put an `issueTitle` on the [IssueAPIRequestModel].
+/// Otherwise, this won't work
 /// If you want to automate this, its better create a `Project Token` with the
 /// correct permissions. <br> <br>
 /// Info about how this works: <br>
@@ -82,7 +84,7 @@ Future<IssueAPIResponseModel?> createGitLabIssue({
 // void main() async {
 //   const gitlabApiUrl = 'https://gitlab.com/api/v4';
 //   const projectId = '51929660';
-//   const accessToken = 'glpat-yqXm2jRtyFZsfTsszRS-';
+//   const accessToken = 'glpat-s2axRR49k4dm5j6GTRJZ';
 
 //   const myId = 14547350;
 
